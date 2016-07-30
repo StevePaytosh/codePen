@@ -1,0 +1,236 @@
+.title {
+  font-size: 20pt;
+  color: white;
+}
+
+#git-logo{
+  width:45px;
+  height:45px;
+   border-radius:50px;
+}
+#li-logo{
+  width:45px;
+  height:45px;
+  border-radius:50px;
+}
+#fcc-logo{
+  width:45px;
+  height:45px;
+   border-radius:50px;
+}
+
+.social-btn{
+  background-color:gray;
+  color:white;
+  border-color:white;
+  border-style:solid;
+  border-radius:50px;
+  height:50px;
+  width:50px;
+  padding:0px 0 0 0px;
+  text-align:left;
+  font-size:12pt;
+   vertical-align:bottom;
+}
+
+.social-btn:hover{
+  border-color:blue;
+}
+#contact-btn{
+  background-color:gray;
+  border-color:white;
+  border-style:solid;
+  color:white;
+  height:50px;
+  font-size:12pt;
+  vertical-align:bottom;
+}
+#contact-btn:hover{
+  border-color:blue;
+}
+#exp-list,
+#lang-list {
+}
+
+.sample-box {
+  border-color: red;
+  border-style: solid;
+  height: 200px;
+}
+
+body {
+  background-color: black;
+}
+
+.list {
+  color: white;
+}
+
+#email {
+  font-size: 16pt;
+  color: white;
+}
+
+.profile-text {
+  color: white;
+  font-size: 14pt;
+  width: 550px;
+}
+
+#profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  margin-right:20px;
+}
+
+#quick-languages {
+  color: white;
+  font-size: 12pt;
+}
+
+#quick-title{
+  text-align:center;
+}
+#quick-title,#profile-info-title{
+  font-size:35pt;
+  color:white;
+}
+
+#portfolio-title {
+  font-size: 35pt;
+  color: white;
+  margin-left: 35vw;
+}
+
+.horizontal-box {
+  font-size: 25pt;
+  color: white;
+  width: 100vw;
+}
+
+.info-box {
+  background-color: blue;
+  color: white;
+  font-size: 16pt;
+}
+
+.section {
+  height: 75vh;
+  width: 100vw;
+}
+
+.info-block {
+  width: 30%;
+}
+
+.top-section {
+  height: 110px;
+}
+
+.experience-history,.profile-info,.portfolio,.philosophy{
+  background-color: light-gray;
+     background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+.experience-history {
+  background-image: url("http://i989.photobucket.com/albums/af11/Ojiro/7032110-japanese-landscape_zpspj4yq1a4.jpg");
+  height:110vh;
+}
+
+.profile-info {
+  background-image: url("http://i989.photobucket.com/albums/af11/Ojiro/cleveland%20ice_zpsbqvfc1nv.jpg");
+  height:800px;
+}
+
+.portfolio {
+  background-image: url("http://i989.photobucket.com/albums/af11/Ojiro/Chess_zps3tbwcpg0.jpg");
+  min-height:100vh;
+}
+
+.philosophy{
+  background-image: url("http://i989.photobucket.com/albums/af11/Ojiro/aurora-northern-lights-aurora-borealis-borealis_zpssltc8y7w.jpg");
+  height:700px;
+ 
+}
+.section-header {
+  font-size: 16;
+  font-color: white;
+}
+
+.section-border {
+  border-top-color:black;
+  border-right-color:black;
+  border-left-color:black;
+  border-bottom-color: red;
+  border-style: solid; 
+}
+
+.example{
+/*  background-color:rgba(255,255,255,1); */
+  background-color:white;
+  border-style:solid;
+  border-color:red;
+  text-align:center;
+  margin: 0 0 0 5px;
+  padding: 5px 0 0 0;
+  font-size:12pt;
+  width:30vw;
+
+}
+
+.example-img{
+  height:200px;
+  width:90%;
+ border-style:solid;
+  border-color:black;
+  border-width:1px;
+  margin-left:5px;
+  
+ 
+}
+
+.work-list{
+  margin-left:15px;
+}
+
+.exp-block-exp,.philosophy-block,.exp-block-about,.intro-block{
+  background-color:gray;
+  opacity:0.85;
+  width:600px;
+  margin: 15px 0 0 20vw;
+  color:white;
+  border-style:solid;
+  border-color:black;
+  text-align:center;
+}
+
+.main-title{
+  border-color:black;
+  background-color:black;
+}
+
+.exp-block-samples{
+  background-color:rgba(255,255,255,.85);
+  padding: 5px 0 0 0;
+  width:95%;
+  margin:0px 0 0 10px;
+  opacity:.85;
+}
+
+.glyphicon-envelope{
+  width:50px;
+  height:50px;
+  margin: 15px 0 0 15px;
+}
+
+.glyphicon-envelope:hover{
+  color:blue;
+}
+
+#philo-flavor{
+  width:380px;
+  height:400px;
+  margin: 5px 0px 5px 20px;
+}
