@@ -1,0 +1,40 @@
+<head>
+	  <script src="jquery-3.1.0.js"></script>	
+      <script type="text/javascript" src="script.js" ></script>
+	  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+  <script type="template/html" id="header-template">
+         <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+  </script>
+  <script type="template/html" id="myTemplate">
+    <td class="account-data account-logo"></td>
+    <td class="account-data name"></td>
+    <td class="account-data status"></td>
+ <td class="account-data description"
+     ></td>
+ <td class="account-data account-goto"></td>
+</script>
+  
+  <input type="text" value="Search Twitch Users" class="search-box">
+  <button type="submit" class="search-btn">Search</button>
+  <button class="search-reset">Reset</button>
+  <div class="switch-container">
+    <input type="radio" class="radio-btn" name="streaming" value="all" id="radio-all">All</input>
+    <input type="radio" id="radio-on" class="radio-btn" name="streaming" value="online">Online</button>
+    <input type="radio" id="radio-off" class="radio-btn" name="streaming" value="offline">Offline</button>
+  </div>
+  <div class="table-container">
+    <table class="results-table">
+    <!-- template html -->
+   </table>
+  </div>
+  <div class="test" id="testy">-</div>
+</body>

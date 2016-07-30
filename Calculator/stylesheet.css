@@ -1,0 +1,65 @@
+body{
+  background-color:#fff;
+}
+.instructions{
+  background-color:black;
+  opacity:.8;
+  color:white;
+  margin-left:10%;
+  margin-top:20px;
+  width:500px;
+}
+
+.operator,.clear,.equals,.delete,.value{
+  color:white;
+  background-color:black;
+  font-weight:bold;
+  border-style:solid;
+  border-color:black;
+  width:55px;
+  margin:2px;
+}
+
+.operator-input-block,.number-input-block {
+   margin: 10% 0px 10% 10px;
+}
+
+#operator-input{
+  background-color:gray;
+  border-color:white;
+}
+.inputs {
+  font-size: 12pt;
+  width:750px;
+  margin-left:25px;
+  border:black;
+  border-style:solid;
+}
+
+#number-input,#operator-input,.inputs{
+  background-color:#D8D8D8;
+}
+
+.inputs::selection 
+{
+    background-color:transparent;
+}
+
+.output {
+  margin-top: 50px;
+  margin-left:25px;
+  
+}
+
+#output {
+  margin: 75px 0px 0px 0px;
+  font-size: 22pt;
+  width:750px;
+  height:50px;
+  background-color:#588259;
+   border-color:black;
+  border-style:solid;
+  text-align:center;
+  border-width:3px;
+  color:black;
+}

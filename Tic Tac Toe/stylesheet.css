@@ -1,0 +1,59 @@
+body{
+  background-color:lightblue;
+}
+.game-container{
+  border-color:black;
+  border-style:solid;
+  width:405px;
+  height:405px;
+  margin: 20px 0 20px 40vw;
+  background-color:white;
+  box-shadow: 5px 5px gray;
+}
+
+.tile{
+  border-style:solid;
+  border-width: 1px;
+  text-align:center;
+  posistion:absolute;
+  vertical-align:middle;
+  font-size:45pt;
+  height:134px;
+  padding: 30px 0 0 0;
+}
+
+.page-title{
+  font-size:35pt;
+  margin: 10px 0 0 45vw;
+  background-color:white;
+  width:300px;
+  text-align:center;
+  box-shadow: 5px 5px gray;
+}
+.main-title{
+  
+}
+.page-subtitle{
+  font-size:30px;
+}
+.btn-container{
+  background-color:white;
+  width:300px;
+  height:55px;
+  margin: 15px 0 0 45vw;
+  text-align:center;
+  box-shadow: 5px 5px gray;
+}
+
+.start-game{
+  background-color:lightgreen;
+  border-radius:10px;
+  width:55px;
+}
+
+.win-text{
+  color:green;
+}
+.loss-text{
+  color:red;
+}

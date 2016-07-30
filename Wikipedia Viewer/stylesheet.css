@@ -1,0 +1,62 @@
+.main-container{
+  margin: 50vh 0 0 10vw;
+}
+.state-3{
+    margin: 10vh 0 0 10vw;
+}
+.main-title{
+  font-size:40pt;
+  font-family:ariel;
+  width:450px;
+  box-shadow: 2px 2px #eeeeee;
+  cursor:pointer;
+  
+}
+.main-title,.search-box{
+  margin: 0 0 0 30vw
+}
+.query{
+  
+}
+.search-box{
+  font-size:12pt;
+}
+
+.search-btn, .clear-btn, .random-btn
+{
+   margin-left:5px;
+  font-size:12pt;
+  font-weight:bold;
+  border-radius:14px;
+  border-color:white;
+  height:30px;
+  width:30px;
+}
+.search-btn{
+  background-color:lightblue;
+}
+.clear-btn{
+  background-color:orange;
+}
+.random-btn{
+  background-color:lightgreen;
+}
+
+.result{
+ border-color:black;
+  border-style:solid;
+  border-width:1pt;
+  margin: 10px 0 0 10px;
+  width:750px;
+  border-radius:5px;
+}
+
+.results-btn{
+  background-color:lightblue;
+  border-color:black;
+  border-radius:5px;
+  margin: 0 0 0 0;
+  width:100px;
+  font-weight:bold;
+  margin: 0 0 0 80%;
+}

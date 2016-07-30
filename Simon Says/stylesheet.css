@@ -1,0 +1,113 @@
+.info{
+  border-style:solid;
+  width:500px;
+  height:100px;
+  margin: 10px 0px 10px 10%;
+  padding: 0px 0px 0px 0px;
+  posistion: 0px 0px 0px 0px;
+  background-color:lightgray;
+}
+
+.button{
+  color:black;
+  height:50%;
+  border-color:black;
+  font-size:44pt;
+  
+}
+.red-btn, .yellow-btn{
+  padding: 15% 0px 0px 20%;
+}
+
+.blue-btn,.green-btn{
+  padding: 15% 0px 0px 17%;
+}
+.red-btn{
+  border-right:solid;
+  border-bottom:solid;
+   -webkit-border-radius: 1000px 0px 0px 0px;
+}
+.red{
+  background-color:#ff0000;
+}
+.press-red{
+ background-color:red;
+}
+.blue-btn{
+  border-left:solid;
+  border-bottom:solid;
+  -webkit-border-radius: 0px 10000px 0px 0px;
+}
+.blue{
+  background-color:blue;
+}
+.press-blue{
+ background-color:blue;
+}
+.yellow-btn{
+  border-right:solid;
+  border-top:solid;
+   -webkit-border-radius: 0px 0px 0px 1000px;
+}
+.yellow{
+  background-color:yellow;
+}
+.press-yellow{
+ background-color:yellow;
+}
+.green-btn{
+  border-left:solid;
+  border-top:solid;
+   -webkit-border-radius: 0px 0px 1000px 0px;
+}
+.green{
+  background-color:green;
+}
+.press-green{
+ background-color:green;
+}
+
+.press-red, .press-blue, .press-yellow, .press-green{
+  color:white;
+  border-color:black;
+}
+.game-container{
+  border-style:solid;
+  border-color:black;
+  border-width:15px;
+  border-radius: 100%;
+  width:50vw;
+  height:50vw;
+  margin: 10px 0 0 100px;
+}
+
+.seq-box , .player-seq{
+  font-size:25pt;
+  padding: 15px 0px 0px 0px;
+  text-align:center;
+  background-color:black;
+  width:100px;
+  height:100%;
+  color:red;
+}
+
+.player-seq{
+  margin-left:47px;
+}
+.play,.reset{
+  width:100px;
+  height:50px;
+  margin: 20px 0px 0px 40px;
+  font-weight:bold;
+  font-size:20pt;
+  color:black;
+}
+
+.play{
+  
+  background-color: lightgreen;
+}
+
+.reset{
+  background-color:orange;
+}

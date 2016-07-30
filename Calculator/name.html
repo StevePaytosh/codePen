@@ -1,0 +1,67 @@
+<head>
+	  <script src="jquery-3.1.0.js"></script>	
+      <script type="text/javascript" src="script.js" ></script>
+	  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+
+  <div class="calculator-element output">
+    <div class="output-block" id="output"></div>
+  </div>
+  <div class="inputs row">
+    <div class="calculator-element col-xs-4" id="number-input">
+      <div class="row number-input-block">
+        <label class="col-xs-4 value" id="num-1">1</label>
+        <label class="col-xs-4 value" id="num-2">2</label>
+        <label class="col-xs-4 value" id="num-3">3</label>
+        <label class="col-xs-4 value" id="num-4">4</label>
+        <label class="col-xs-4 value" id="num-5">5</label>
+        <label class="col-xs-4 value" id="num-6">6</label>
+        <label class="col-xs-4 value" id="num-7">7</label>
+        <label class="col-xs-4 value" id="num-8">8</label>
+        <label class="col-xs-4 value" id="num-9">9</label>
+        <label class="col-xs-4 value" id="num-0">0</label>
+        <label class="col-xs-4 value" id="num-neg">(-)</label>
+        <label class="col-xs-4 value" id="num-dec">.</label>
+        
+        
+      </div>
+    </div>
+    <div class="calculator-element col-xs-4" id="operator-input">
+      <div class="row operator-input-block">
+        <label class="col-xs-6 operator operator-plus" id="operator-+">+</label>
+        <label class="col-xs-6 operator operator-minus" id="operator--">-</label>
+        <label class="col-xs-6 operator operator-x" id="operator-x">x</label>
+        <label class="col-xs-6 operator operator-divide" id="operator-/">/</label>
+        <label class="col-xs-6 operator operator-mod" id="operator-%">%</label>
+        <label class="col-xs-6 operator operator-power" id="operator-^">^</label>
+        <label class="col-xs-6 operator operator-factorial" id="operator-!">!</label>
+        <label class="col-xs-6 operator operator-left" id="operator-(">(</label>
+        <label class="col-xs-6 operator operator-right" id="operator-)">)</label>
+        <label class="col-xs-6 equals" id="operator-=">=</label>
+        <label class="col-xs-6 clear" id="clear">CLR</label>
+        <label class="col-xs-6 delete" id="delete">DEL</label>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="instructions">
+    Instructions:
+    <ul>
+      <li>Enter your calculation, and get the result by either hitting equals or enter</li>
+      <li>Use % for remainder division</li>
+      <li>shorcuts keys</li>
+      <ul>
+        <li>c=clear</li>
+        <li>d=delete</li>
+        <li>0-9</li>
+        <li>operator signs</li>
+        <li>enter=equals</li>
+      </ul>
+      <li>Do not divide by 0</li>
+      <li>Do not attempt to use while on fire</li>
+    </ul>
+  </div>
+</body>

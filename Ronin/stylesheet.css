@@ -1,0 +1,49 @@
+body{
+  background-color:black;
+  border-color:white;
+  border-style:solid;
+  color:white;
+}
+
+.content{
+margin:auto;
+}
+#title{
+  color:white;
+  text-align:center;
+  font-size:75pt;
+  margin-bottom:-20px;
+}
+#sub-title{
+  color:white;
+  font-size:25pt;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+#pic1{
+  width:327px;
+  height:500px;
+  margin: auto;
+ posistion:center;
+  border-radius:5px;
+}
+
+.picture{
+  margin:0;
+}
+.about{
+  width:270px;
+  margin: 0;
+}
+
+.bio{
+ margin:0;
+  font-size:16pt;
+}
+
+@media screen and (min-width: 1000px) {
+  .content{
+    margin: 10px 0px 0px 15%;
+  }
+}

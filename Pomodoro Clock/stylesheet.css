@@ -1,0 +1,63 @@
+#snooze-text{
+  margin-left:25px;
+}
+.info-bar, .snooze-bar{
+  margin-left:30vw;
+  margin-top:10pt;
+  font-size:16pt;
+  font-weight:bold;
+}
+.snooze-bar{
+  background-color:green;
+  color:black;
+  width:160px;
+  border-radius:12pt;
+  font-weight:bold;
+}
+.clock-block{
+  background-color:white;
+  color:black;
+  border-color:red;
+  border-style:solid;
+  width:160px;
+  height:160px;
+  border-radius:80px;
+  margin-left:30vw;
+  margin-top:50px;
+}
+#time-display{
+  margin-left:50px;
+  margin-top:60px;
+  font-size:20pt;
+}
+.sub-time{
+  color:red;
+}
+.add-time{
+  color:green;
+}
+body{
+  background-color:#555555;
+  color:white;
+}
+
+.page-top{
+  font-size:26pt;
+  margin-left:25vw;
+}
+
+.timer-set{
+  font-size:26pt;
+  margin-left:25vw;
+}
+.timer-labels{
+  margin-left:25vw;
+  font-size:16pt;
+}
+
+#work-label{
+  margin-left:130px;
+}
+#work-min{
+  margin-left:100px;
+}

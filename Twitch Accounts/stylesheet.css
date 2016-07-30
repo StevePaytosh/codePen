@@ -1,0 +1,59 @@
+body{
+  background-color:lightgray;
+}
+.search-box,.switch-container{
+  margin-left:100px;
+}
+.search-box{
+  height:20px;
+}
+.search-btn{
+  height:25px;
+  font-weight:bold;
+  font-size:12pt;
+  background-color:blue;
+}
+.search-reset{
+  height:25px;
+  font-weight:bold;
+  font-size:12pt;
+  background-color:orange;
+}
+.results-table{
+  margin: 10px 0px 0px 100px;
+  background-color:white;
+}
+
+.logo{
+  width:50px;
+  height:50px;
+  border-radius:25px;
+}
+.goto-btn
+{
+  background-color: limegreen;
+  font-weight:bold;
+  border-radius:30px; 
+  margin-right:10px;
+}
+table, tr, th{
+  
+  border-spacing:0;
+  text-align:left;
+}
+
+td,th{
+  padding-left:25px;
+  border-bottom: 1pt solid black;
+}
+
+th{
+  font-size:14pt;
+}
+.account-content{
+  width:275px;
+}
+
+table{
+ 
+}
