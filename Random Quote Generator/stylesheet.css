@@ -1,0 +1,42 @@
+body{
+  background-color:black;
+  color:white;
+  font-size:14pt;
+}
+
+.top-page{
+  margin-left:25vw;
+  font-size:35pt;
+}
+
+.top-page-subtext{
+  margin-left:25vw;
+}
+.box{
+  background-color:white;
+  color:black;
+  font-size:20pt;
+  width:100%;
+  height:90%;
+  border-radius: 5pt;
+  border-style:solid;
+  border-color:green;
+  border-width:3pt;
+
+}
+.quote-section{
+    margin-top:10vw;
+  margin-left:25vw;
+  width:50vw;
+  height:30vw;
+}
+
+#new-quote-btn, #tweet-btn{
+  font-size:14pt;
+  font-weight:bold;
+}
+#quote-title{
+  font-size:20pt;
+  font-family:cursive;
+  color:qhite;
+}

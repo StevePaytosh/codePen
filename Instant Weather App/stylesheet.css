@@ -1,0 +1,82 @@
+body{
+  background-color:white;
+  /* background-image:url("https://static.pexels.com/photos/1127/cold-snow-landscape-nature-large.jpg");
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;  */
+}
+
+.data-container{
+ /*  background-image:url("https://static.pexels.com/photos/7976/pexels-photo-large.jpg");
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  padding:5pt; */
+  
+}
+
+#warning{
+  color:red;
+}
+.search-container{
+  margin: 10px 0 0 65%;
+}
+
+.search-btn{
+  background-color:lightgreen;
+  font-weight:bold;
+  color:black;
+}
+
+.switch-container{
+  margin: 25px 0px 0px 85vw;
+  width:200px;
+}
+
+.switch{
+  background-color:#33ccff;
+  width:50px;
+  height:50px;
+  color:white;
+  border-radius:25px;
+  border-width: 2pt;
+  border-color:lightgray;
+  font-size:14pt;
+}
+
+
+.page-title{
+  background-color:#0066ff;
+  width:460px;
+  height:100px;
+  color:black;
+  font-size:26pt;
+  text-align:center;
+  margin: 55px 0px 0px 40vw;
+  border-radius:10pt;
+  box-shadow:10px 10px lightgray;
+}
+#location{
+  color:white;
+  font-size:18pt;
+}
+.info-block{
+  margin: 50px 0px 0px 40vw;
+  /*opacity:.75; */
+}
+.info-box{
+  background-color:#0066ff;
+  width:100px;
+  margin: 0px 0px 0px 5px;
+  border-radius:20px;
+  width:150px;
+  height:90px;
+  font-size:16pt;
+  box-shadow:10px 10px lightgray;
+  color:white;
+ 
+}
+
+#weather-icon{
+  
+}
