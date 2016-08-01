@@ -5,11 +5,14 @@ var _MAX_TIME=10; //time is seconds to enter the given value
 var match=0;
 var phase=0; // phase 0=welcome, phase 1= info, phase 2=gameplay, phase 3=round over
 var paste=false;
-var no_scramble[][]=[ ["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"],["G","G"],["H","H"],["I","I"],["J","J"],["K","K"],["L","L"],
-	["M","M"],["N","N"],["O","O"],["P","P"],["Q","Q"],["R","R"],["S","S"],["T","T"],["U","U"],["V","V"],["W","W"],["X","X"],["Y","Y"],["Z","Z"]    ];
-var current_scramble[][]; //contains the 1-to-1 mapping of characters used to dechipher a keys true value in the game
-var diff_scramble[][]; //highlights the differces in the current and no scramble
+//var no_scramble=[ ["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"],["G","G"],["H","H"],["I","I"],["J","J"],["K","K"],["L","L"],
+//	["M","M"],["N","N"],["O","O"],["P","P"],["Q","Q"],["R","R"],["S","S"],["T","T"],["U","U"],["V","V"],["W","W"],["X","X"],["Y","Y"],["Z","Z"] ];
+//var no_scramble=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var no_scramble=[65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90];
+var current_scramble; //contains the 1-to-1 mapping of characters used to dechipher a keys true value in the game, only capital A-Z are listed
+var diff_scramble; //highlights the differces in the current and no scramble
 
+//ascii A-Z = 41 - 5A hex or 65-90 decimal for capital letters
 $(document).ready(function(){
 	
 	//phase 0, welcome
@@ -52,20 +55,31 @@ function letterPress()
 	var text_box_value=document.getElementsByClassName("text-box")[0].value;
 	var text_box_length=text_box_value.length;
 	var new_char=text_box_value.charAt(text_box_length-1); //letter typed
+	new_char.toUpperCase();//force the new char into uppercase
+	
+	var char_val=new_char.charCodeAt(0)-65; //get the ascii value of the typed letter, subtract 65 to get the appropriate index
+	
+	if(char_val>=0 && char_val<26)
+	{
+		//if the value is in the range of uppercase 
+			new_char=String.fromCharCode(current_scramble[char_val]);
+	}
+	
 	$("#test").html(new_char);
+	input+=new_char;
 	
 	//truncate the text box value if it exceeds the maximum character size
-	if(text_box_value.length>_MAX_SIZE)
+	if(input.length>_MAX_SIZE)
 	{
-		var temp=text_box_value.slice(text_box_length-_MAX_SIZE,text_box_length);
+		input=input.slice(text_box_length-_MAX_SIZE,text_box_length);
 		//document.getElementsByClassName("text-box")[0].value=temp;
-		text_box_value=temp;
+	//	text_box_value=temp;
 		
 	}
 	
-	text_box_value=text_box_value.toUpperCase();
-	document.getElementsByClassName("text-box")[0].value=text_box_value;
-	input=text_box_value;
+	//text_box_value=text_box_value.toUpperCase();
+	document.getElementsByClassName("text-box")[0].value=input;
+	//input=text_box_value;
 	
 	//check for a match
 	
@@ -78,12 +92,14 @@ function letterPress()
 function win()
 {
 	$("#info-block").html("winner!");
+	$(".restart-btn").html("Next");
 	$("#test").html("winner!");
 	phase=3;
 }
 
 function lose(){
 	$("#test").html("loser!");
+	$(".restart-btn").html("Next");
 	$("#info-block").html("loser!");
 	phase=3;
 }
@@ -105,12 +121,13 @@ function setPhase1()
 {
 	//create a new round. 
 	current_word=getWord();
-	scramble_array=setScramble();
+	current_scramble=setScramble(); //get a scramble and test that it is valid
+	diff_scramble=getScrambledChars();
 	$("#info-block").html("");
 	$("#type").html("TYPE: --");
 	$("#timer").html("TIME LEFT: --");
 	$(".restart-btn").html("Start Round");
-	$("#play-block").html("Here are your scrambled letters... <p> Your next word is " + current_word.length + " letters long");
+	$("#play-block").html("Here are your scrambled letters... <p>"+ displayDiff() +"Your next word is " + current_word.length + " letters long");
 	phase=1;
 	
 	
@@ -164,20 +181,37 @@ function getWord()
 function setScramble()
 {
 	//set an array for scrambled characters
-	var sample_scramble[][]=[ ["A","B"],["B","M"],["C","C"],["D","Q"],["E","E"],["F","F"],["G","G"],["H","H"],["I","I"],["J","J"],["K","K"],["L","L"],
-	["M","A"],["N","N"],["O","O"],["P","P"],["Q","D"],["R","R"],["S","S"],["T","T"],["U","U"],["V","V"],["W","W"],["X","X"],["Y","Y"],["Z","Z"]    ];
+	var sample_scramble=[70,66,67,68,69,65,71,72,73,74,75,77,85,78,79,80,81,82,83,84,76,86,87,88,89,90];
 	return sample_scramble;
 }
 
 function getScrambledChars()
 {
-	var results[][];
+	var results=[];
 	
 	for(var i=0; i<26; i++)
 	{
-		if(current_scramble[i][0]!=current_scramble[i][1])
+		if(no_scramble[i]!=current_scramble[i])
 		{
+			results.push(i); //push i, followed the scramble value
 			results.push(current_scramble[i]);
 		}
 	}
+	
+	return results;
+}
+
+function displayDiff()
+{
+	var size=diff_scramble.length;
+	var result="";
+	
+	for(var i=0; i<size; i++)
+	{
+		//read 2 values at a time. The first value is the antecedant (say A), the second will be the consquent (say R). 
+		// if a usser types A they will get R instead, they will be in the array in that order {A,R,...}
+		result+=String.fromCharCode(no_scramble[diff_scramble[i++]]) + " --> " + String.fromCharCode(diff_scramble[i]) + "<p>";
+	}
+	
+	return result;
 }
