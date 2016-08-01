@@ -65,7 +65,7 @@ function letterPress()
 			new_char=String.fromCharCode(current_scramble[char_val]);
 	}
 	
-	$("#test").html(new_char);
+//	$("#test").html(new_char);
 	input+=new_char;
 	
 	//truncate the text box value if it exceeds the maximum character size
@@ -93,14 +93,16 @@ function win()
 {
 	$("#info-block").html("winner!");
 	$(".restart-btn").html("Next");
-	$("#test").html("winner!");
+	//$("#test").html("winner!");
+//	$(".text-box").html("Winner!!");
 	phase=3;
 }
 
 function lose(){
-	$("#test").html("loser!");
+	//$("#test").html("loser!");
 	$(".restart-btn").html("Next");
 	$("#info-block").html("loser!");
+//	$(".text-box").html("Winner!!");
 	phase=3;
 }
 

@@ -4,14 +4,14 @@ body{
 
 #logo{
 		color:green;
-	font-size:25pt;
-	margin-left:45vw;
+	font-size:35pt;
+	margin-left:35vw;
 }
 
 #info-block{
-margin: 10pt 0 0 14pt;
+margin: 10pt 0 0 40vw;
 color:white;
-font: 14pt;
+font-size: 30pt;
 }
 
 #timer,#type,#scrambled{
@@ -37,16 +37,17 @@ font: 14pt;
 	width:400px;
 }
 
-.scramble{
-	background-color:blue;
+#btn-container{
+	margin: 5pt 0 0 45vw; 
 	color: white;
 	font-size:20pt;
 }
+.scramble-btn{
+	background-color:blue;
+}
 
-.restart{
+.restart-btn{
 	background-color:red;
-	color: white;
-	font-size:20pt;
 }
 
 #test{
