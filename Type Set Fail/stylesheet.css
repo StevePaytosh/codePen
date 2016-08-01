@@ -1,0 +1,51 @@
+body{
+	background-color:black !important;
+}
+
+#logo{
+		color:green;
+	font-size:25pt;
+	margin-left:45vw;
+}
+
+#info-block{
+margin 10pt 0 0 14pt;
+}
+
+#timer,#type,#scrambled{
+		font-size:14;
+		color:white;
+		margin-left:40vw;
+}
+
+#play-block{
+	border-bottom-style:solid;
+	border-bottom-color:red;
+	border-bottom-width: 3pt;
+	margin: 50pt 0 0 30vw;
+	width:400px;
+}
+
+.text-box{
+	background-color:gray;
+	color:white;
+	font-size:25pt;
+	width:400px;
+}
+
+.scramble{
+	background-color:blue;
+	color: white;
+	font-size:20pt;
+}
+
+.restart{
+	background-color:red;
+	color: white;
+	font-size:20pt;
+}
+
+#test{
+	color:white;
+	font-size:25pt;
+}
