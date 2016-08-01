@@ -55,7 +55,7 @@ function letterPress()
 	var text_box_value=document.getElementsByClassName("text-box")[0].value;
 	var text_box_length=text_box_value.length;
 	var new_char=text_box_value.charAt(text_box_length-1); //letter typed
-	new_char.toUpperCase();//force the new char into uppercase
+	new_char=new_char.toUpperCase();//force the new char into uppercase
 	
 	var char_val=new_char.charCodeAt(0)-65; //get the ascii value of the typed letter, subtract 65 to get the appropriate index
 	
