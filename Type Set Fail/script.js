@@ -83,7 +83,7 @@ function letterPress()
 	
 	//check for a match
 	
-	if(text_box_value.includes(current_word.toUpperCase()) )
+	if(input.includes(current_word.toUpperCase()) )
 	{
 			match=1;
 	}
