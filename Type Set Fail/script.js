@@ -1,7 +1,13 @@
 var input="";
 var current_word="cat";
 var _MAX_SIZE=15;
-var _MAX_TIME=10; //time is seconds to enter the given value
+var _MAX_TIME=20; //time is seconds to enter the given value
+var round_time=20;
+var current_time=20;
+var timerOn=false;
+var timer;//=setInterval(updateTime,1000);
+var rounds_played=0;
+var rounds_won=0;
 var match=0;
 var phase=0; // phase 0=welcome, phase 1= info, phase 2=gameplay, phase 3=round over
 var paste=false;
@@ -111,18 +117,22 @@ function letterPress()
 
 function win()
 {
+	//timer.stop();
+	clearInterval(timer);
+	updateTimer("");
+	input="";
 	$("#info-block").html("winner!");
 	$(".restart-btn").html("Next");
-	//$("#test").html("winner!");
-//	$(".text-box").html("Winner!!");
 	phase=3;
 }
 
 function lose(){
-	//$("#test").html("loser!");
+	//timer.stop();
+	clearInterval(timer);
+	updateTimer("");
+	input="";
 	$(".restart-btn").html("Next");
 	$("#info-block").html("loser!");
-//	$(".text-box").html("Winner!!");
 	phase=3;
 }
 
@@ -134,7 +144,6 @@ function setPhase0(){
 	+" As long as you have the right characters in the right order, you'll be fine.<p>You'll also be able to view which letters" +
 	" are scrambled. <p> Don't cry, it'll be over quickly");
 	
-//	$(".scramble-btn").setAttribute("hidden","true"); //visibility='hidden';
 	$(".restart-btn").html("Let's Play");
 	phase=0;
 }
@@ -148,9 +157,9 @@ function setPhase1()
 	$("#info-block").html("");
 	$("#type").html("TYPE: --");
 	$("#timer").html("TIME LEFT: --");
-	//$(".scramble-btn").setAttribute("hidden","true");
 	$(".restart-btn").html("Start Round");
 	$("#play-block").html("Here are your scrambled letters... <p>"+ displayDiff() +"Your next word is " + current_word.length + " letters long");
+	updateTimer("");
 	phase=1;
 	
 	
@@ -160,12 +169,14 @@ function setPhase2()
 {
 	//move into gameplay
 	$(".restart-btn").html("Give Up");
-//	$(".scramble-btn").setAttribute("hidden","false");
 	$("#type").html("TYPE: " + current_word);
-	var max_time=10;
-	$("#timer").html("TIME LEFT: " + max_time + "seconds");
+	round_time=getRoundTime();
+	current_time=round_time;
+	//$("#timer").html("TIME LEFT: " + max_time + " seconds");
+	updateTime(round_time);
 	phase=2;
 	setTextBox();
+	timer=setInterval(updateTime,1000);
 	
 }
 
@@ -245,4 +256,30 @@ function displayDiff()
 	}
 	
 	return result;
+}
+
+function updateTime()
+{
+	if(phase != 2)
+		return;
+	current_time--;
+	if(current_time<=0)
+	{
+		lose();
+		return;
+	}
+	updateTimer(current_time);
+}
+
+function updateTimer(value)
+{
+	if(value=="")
+		$("#timer").html("TIME LEFT:");
+	else
+	$("#timer").html("TIME LEFT: " + value + " seconds");
+}
+
+function getRoundTime()
+{
+ return 20;
 }
