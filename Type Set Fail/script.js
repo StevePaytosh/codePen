@@ -5,12 +5,10 @@ var _MAX_TIME=10; //time is seconds to enter the given value
 var match=0;
 var phase=0; // phase 0=welcome, phase 1= info, phase 2=gameplay, phase 3=round over
 var paste=false;
-//var no_scramble=[ ["A","A"],["B","B"],["C","C"],["D","D"],["E","E"],["F","F"],["G","G"],["H","H"],["I","I"],["J","J"],["K","K"],["L","L"],
-//	["M","M"],["N","N"],["O","O"],["P","P"],["Q","Q"],["R","R"],["S","S"],["T","T"],["U","U"],["V","V"],["W","W"],["X","X"],["Y","Y"],["Z","Z"] ];
-//var no_scramble=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var no_scramble=[65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90];
+var no_scramble=[65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90]; //this can removed in favor of math i+65
 var current_scramble; //contains the 1-to-1 mapping of characters used to dechipher a keys true value in the game, only capital A-Z are listed
 var diff_scramble; //highlights the differces in the current and no scramble
+var showScramble=false;
 
 //ascii A-Z = 41 - 5A hex or 65-90 decimal for capital letters
 $(document).ready(function(){
@@ -30,6 +28,28 @@ $(document).ready(function(){
 		}
 	} );
 	
+	$(".scramble-btn").on("click", function()
+	{
+		//while in phase 2 (game play), if the user clicks the view scramble button, show the current scramble settings
+		if(phase!=2)
+			return;
+		
+		if(showScramble)
+		{
+			//set the text box with the current input
+			setTextBox();
+			document.getElementsByClassName("text-box")[0].value=input;
+			$(".scramble-btn").html("View Scramble");
+			showScramble=false;
+		}
+		else
+		{
+			//hide the text box and show the scramble
+			$("#play-block").html(displayDiff() );
+			$(".scramble-btn").html("Go Back");
+			showScramble=true;
+		}
+	} );
 	
 	
 });
@@ -114,7 +134,7 @@ function setPhase0(){
 	+" As long as you have the right characters in the right order, you'll be fine.<p>You'll also be able to view which letters" +
 	" are scrambled. <p> Don't cry, it'll be over quickly");
 	
-	$(".scramble-btn").hide();
+//	$(".scramble-btn").setAttribute("hidden","true"); //visibility='hidden';
 	$(".restart-btn").html("Let's Play");
 	phase=0;
 }
@@ -128,6 +148,7 @@ function setPhase1()
 	$("#info-block").html("");
 	$("#type").html("TYPE: --");
 	$("#timer").html("TIME LEFT: --");
+	//$(".scramble-btn").setAttribute("hidden","true");
 	$(".restart-btn").html("Start Round");
 	$("#play-block").html("Here are your scrambled letters... <p>"+ displayDiff() +"Your next word is " + current_word.length + " letters long");
 	phase=1;
@@ -138,13 +159,19 @@ function setPhase1()
 function setPhase2()
 {
 	//move into gameplay
-	$("#play-block").html("<input type=\"text\" value=\"\" class=\"text-box\">"); //set the text box for play
 	$(".restart-btn").html("Give Up");
+//	$(".scramble-btn").setAttribute("hidden","false");
 	$("#type").html("TYPE: " + current_word);
 	var max_time=10;
 	$("#timer").html("TIME LEFT: " + max_time + "seconds");
 	phase=2;
+	setTextBox();
 	
+}
+
+function setTextBox()
+{
+	$("#play-block").html("<input type=\"text\" value=\"\" class=\"text-box\">"); //set the text box for play
 		$(".text-box").focus( function() 
 		{
 			
@@ -169,6 +196,8 @@ function setPhase2()
 			
 		}
 	);
+	
+	$(".text-box").focus();
 }
 
 function getWord()
