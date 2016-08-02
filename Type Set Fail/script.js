@@ -4,11 +4,10 @@ var _MAX_SIZE=15;
 var _MAX_TIME=20; //time is seconds to enter the given value
 var round_time=20;
 var current_time=20;
-var timerOn=false;
-var timer;//=setInterval(updateTime,1000);
+var timer;
 var rounds_played=0;
 var rounds_won=0;
-var match=0;
+var match=false;
 var phase=0; // phase 0=welcome, phase 1= info, phase 2=gameplay, phase 3=round over
 var paste=false;
 var no_scramble=[65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90]; //this can removed in favor of math i+65
@@ -88,19 +87,15 @@ function letterPress()
 	if(char_val>=0 && char_val<26)
 	{
 		//if the value is in the range of uppercase 
-			new_char=String.fromCharCode(current_scramble[char_val]);
+		new_char=String.fromCharCode(current_scramble[char_val]);
 	}
 	
-//	$("#test").html(new_char);
 	input+=new_char;
 	
 	//truncate the text box value if it exceeds the maximum character size
 	if(input.length>_MAX_SIZE)
 	{
 		input=input.slice(text_box_length-_MAX_SIZE,text_box_length);
-		//document.getElementsByClassName("text-box")[0].value=temp;
-	//	text_box_value=temp;
-		
 	}
 	
 	//text_box_value=text_box_value.toUpperCase();
@@ -111,28 +106,27 @@ function letterPress()
 	
 	if(input.includes(current_word.toUpperCase()) )
 	{
-			match=1;
+			match=true;
 	}
 }
 
 function win()
 {
-	//timer.stop();
+	match=false;
 	clearInterval(timer);
-	updateTimer("");
+	//updateTimer("");
 	input="";
-	$("#info-block").html("winner!");
 	$(".restart-btn").html("Next");
+	$("#info-block").html("WINNER!");
 	phase=3;
 }
 
 function lose(){
-	//timer.stop();
 	clearInterval(timer);
-	updateTimer("");
+//	updateTimer("");
 	input="";
 	$(".restart-btn").html("Next");
-	$("#info-block").html("loser!");
+	$("#info-block").html("LOSER!");
 	phase=3;
 }
 
@@ -154,11 +148,14 @@ function setPhase1()
 	current_word=getWord();
 	current_scramble=setScramble(); //get a scramble and test that it is valid
 	diff_scramble=getScrambledChars();
+	round_time=getRoundTime();
+	current_time=round_time;
 	$("#info-block").html("");
-	$("#type").html("TYPE: --");
+	$("#type").html("TYPE:");
 	$("#timer").html("TIME LEFT: --");
 	$(".restart-btn").html("Start Round");
-	$("#play-block").html("Here are your scrambled letters... <p>"+ displayDiff() +"Your next word is " + current_word.length + " letters long");
+	$("#play-block").html("Scrambled Letters:<p>"+ displayDiff() +"<p>Word Length: " + current_word.length + " letters long<br>"
+	+ "Time: " + round_time +" seconds");
 	updateTimer("");
 	phase=1;
 	
@@ -169,9 +166,7 @@ function setPhase2()
 {
 	//move into gameplay
 	$(".restart-btn").html("Give Up");
-	$("#type").html("TYPE: " + current_word);
-	round_time=getRoundTime();
-	current_time=round_time;
+	$("#type").html("TYPE: " + current_word.toUpperCase());
 	//$("#timer").html("TIME LEFT: " + max_time + " seconds");
 	updateTime(round_time);
 	phase=2;
