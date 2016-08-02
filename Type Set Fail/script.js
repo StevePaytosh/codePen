@@ -108,10 +108,10 @@ function lose(){
 
 function setPhase0(){
 	//phase 0, welcome
-	$("#play-block").html("Welcome to TYPE SET FAIL: <p> The name of the game is to type whatever word comes up. Simple Right? <p>"+
-	"Wrong, the keys you type will be scrambled. Still doable right? perhaps, if you can handle doing it in just a few seconds...because that's all you'll"+
-	"have to work with.<p> While playing, don't worry about deleting wrong characters <p>"
-	+" As long as you have the right characters in the right order, you'll be fine. <p> You'll also be able to view which letters" +
+	$("#play-block").html("Welcome to TYPE SET FAIL:<p>The name of the game is to type whatever word comes up.<br><p>Simple Right?<br>"+
+	"The catch is that the keys you type are scrambled.<br><br>You can do that, can't you?<br>"+
+	"You'll only have a few seconds to do it.<p> While playing, don't worry about deleting wrong characters:<br>"
+	+" As long as you have the right characters in the right order, you'll be fine.<p>You'll also be able to view which letters" +
 	" are scrambled. <p> Don't cry, it'll be over quickly");
 	
 	$(".scramble-btn").hide();
