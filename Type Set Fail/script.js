@@ -21,7 +21,6 @@ $(document).ready(function(){
 	//phase 0, welcome
 	setPhase0();
 	
-	
 	$(".restart-btn").on("click", function(){
 		switch(phase)
 		{
@@ -218,8 +217,16 @@ function getWord()
 function setScramble()
 {
 	//set an array for scrambled characters
-	var sample_scramble=[70,66,67,68,69,65,71,72,73,74,75,77,85,78,79,80,81,82,83,84,76,86,87,88,89,90];
-	return sample_scramble;
+	//var sample_scramble=[70,66,67,68,69,65,71,72,73,74,75,77,85,78,79,80,81,82,83,84,76,86,87,88,89,90];
+	//return sample_scramble;
+	if(rounds_played==0)
+		return getScramble(1);
+	if(rounds_won/rounds_played <.25)
+	return getScramble(1);
+	else if(rounds_won/rounds_played < .50)
+		return getScramble(2);
+	else
+		return getScramble(3);
 }
 
 function getScrambledChars()
@@ -247,7 +254,8 @@ function displayDiff()
 	{
 		//read 2 values at a time. The first value is the antecedant (say A), the second will be the consquent (say R). 
 		// if a usser types A they will get R instead, they will be in the array in that order {A,R,...}
-		result+=String.fromCharCode(no_scramble[diff_scramble[i++]]) + " --> " + String.fromCharCode(diff_scramble[i]) + "<p>";
+	
+		result+=String.fromCharCode(no_scramble[diff_scramble[i++]]) + " --> " + String.fromCharCode(diff_scramble[i]) + "<br>";
 	}
 	
 	return result;
