@@ -115,7 +115,7 @@ function win()
 	match=false;
 	clearInterval(timer);
 	//updateTimer("");
-	input="";
+//	input="";
 	$(".restart-btn").html("Next");
 	$("#info-block").html("WINNER!");
 	phase=3;
@@ -124,7 +124,7 @@ function win()
 function lose(){
 	clearInterval(timer);
 //	updateTimer("");
-	input="";
+//	input="";
 	$(".restart-btn").html("Next");
 	$("#info-block").html("LOSER!");
 	phase=3;
@@ -146,6 +146,7 @@ function setPhase1()
 {
 	//create a new round. 
 	
+	input="";
 	current_word=getWord(calculateDifficulty());
 	current_scramble=getScramble(calculateDifficulty()); //get a scramble and test that it is valid
 	diff_scramble=getScrambledChars();
