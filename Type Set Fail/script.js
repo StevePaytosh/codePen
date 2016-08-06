@@ -18,6 +18,7 @@ var showScramble=false;
 //ascii A-Z = 41 - 5A hex or 65-90 decimal for capital letters
 $(document).ready(function(){
 	
+	
 	//phase 0, welcome
 	setPhase0();
 	
@@ -144,8 +145,20 @@ function setPhase0(){
 function setPhase1()
 {
 	//create a new round. 
-	current_word=getWord();
-	current_scramble=setScramble(); //get a scramble and test that it is valid
+	var difficulty;
+	if(rounds_played==0)
+		difficulty=0;
+	else
+	{
+		if( rounds_won/rounds_played < .25)
+		difficulty=0;
+		else if(rounds_won/rounds_played < .50)
+		difficulty=1;
+		else
+		difficulty=2;
+	}
+	current_word=getWord(difficulty);
+	current_scramble=getScramble(difficulty); //get a scramble and test that it is valid
 	diff_scramble=getScrambledChars();
 	round_time=getRoundTime();
 	current_time=round_time;
@@ -205,14 +218,6 @@ function setTextBox()
 	$(".text-box").focus();
 }
 
-function getWord()
-{
-	//get a randomly selected word
-	//abstract the word selection code to another piece of js
-	var choices=["cat","dog", "mug", "sauna", "bath", "car"];
-	var x=Math.floor(Math.random()*6);
-	return choices[x];
-}
 
 function setScramble()
 {

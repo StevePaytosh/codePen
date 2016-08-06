@@ -1,11 +1,5 @@
 //addToDictionary()
 //sortDictionary()
-/*
-getWord(size)
-{
-	
-}
-*/
 
 function getScramble(difficulty)
 {
@@ -13,9 +7,9 @@ function getScramble(difficulty)
 	var scrambles=0;
 	switch(difficulty)
 	{
-		case 1: scrambles=5; break;
-		case 2: scrambles=7; break;
-		case 3: scrambles=12; break;
+		case 0: scrambles=5; break;
+		case 1: scrambles=7; break;
+		case 2: scrambles=12; break;
 		default: scrambles=15; break;
 	}
 	
