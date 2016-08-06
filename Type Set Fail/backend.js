@@ -1,15 +1,13 @@
-//addToDictionary()
-//sortDictionary()
-
 function getScramble(difficulty)
 {
+	//function receives a difficulty, and converts that into the of swaps that should be made to scramble the keyboard
 	//difficulty levels 1=> 5 scramble,  2 => 7 scrambles, 3 => 12 scrambles
 	var scrambles=0;
 	switch(difficulty)
 	{
-		case 0: scrambles=5; break;
-		case 1: scrambles=7; break;
-		case 2: scrambles=12; break;
+		case 0: scrambles=10; break;
+		case 1: scrambles=15; break;
+		case 2: scrambles=25; break;
 		default: scrambles=15; break;
 	}
 	

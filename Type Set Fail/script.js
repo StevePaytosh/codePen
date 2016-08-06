@@ -145,20 +145,9 @@ function setPhase0(){
 function setPhase1()
 {
 	//create a new round. 
-	var difficulty;
-	if(rounds_played==0)
-		difficulty=0;
-	else
-	{
-		if( rounds_won/rounds_played < .25)
-		difficulty=0;
-		else if(rounds_won/rounds_played < .50)
-		difficulty=1;
-		else
-		difficulty=2;
-	}
-	current_word=getWord(difficulty);
-	current_scramble=getScramble(difficulty); //get a scramble and test that it is valid
+	
+	current_word=getWord(calculateDifficulty());
+	current_scramble=getScramble(calculateDifficulty()); //get a scramble and test that it is valid
 	diff_scramble=getScrambledChars();
 	round_time=getRoundTime();
 	current_time=round_time;
@@ -290,4 +279,22 @@ function updateTimer(value)
 function getRoundTime()
 {
  return 20;
+}
+
+function calculateDifficulty()
+{
+var difficulty;
+	if(rounds_played==0)
+		difficulty=0;
+	else
+	{
+		if( rounds_won/rounds_played < .25)
+		difficulty=0;
+		else if(rounds_won/rounds_played < .50)
+		difficulty=1;
+		else
+		difficulty=2;
+	}
+	
+	return difficulty;
 }
