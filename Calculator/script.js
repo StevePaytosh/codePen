@@ -148,6 +148,7 @@ if(output=="NaN" || output=="Infinity" )
 }); // ends document.ready
 
 function clumpNumbers(stack) {
+	//returns a string of numbers seperated by space 
   var temp = "";
   var lastChar = "";
 
@@ -178,51 +179,70 @@ function clumpNumbers(stack) {
 }; // ends clump numbers
 
 function getPostfix(input) {
-  var output = [];
+	//convert the input to postfix notation
+  var postfix = [];
   var stack = [];
-
-  for (var i = 0; i < input.length; i++) {
-    if (isNumber(input[i])) {
-      output.push(input[i]);
-    } else if (input[i] == "(") {
-      stack.push(input[i]);
-    } else if (input[i] == ")") {
-      //pop the stack into output until left paren
-      var topOfStack = "";
-      while (stack.length > 0) {
-        topOfStack = stack.pop();
-        if (topOfStack == "(") {
-          break;
-        } else {
-          output.push(topOfStack);
-        }
-      }
-    } else if (stack.length == 0 || stack[stack.length - 1] == "(") {
-      stack.push(input[i]);
-    } else if (hasPrecedence(input[i], stack[stack.length - 1]) < 0) {
-      stack.push(input[i]);
-    } else if (hasPrecedence(input[i], stack[stack.length - 1]) == 0) {
-      var item = stack.pop();
-      output.push(item);
-      stack.push(input[i]);
-    } else if (hasPrecedence(input[i], stack[stack.length - 1]) > 0) {
-      var topOfStack = "";
-      while (hasPrecedence(input[i], stack[stack.length - 1]) < 0) {
-        topOfStack = stack.pop();
-        output.push(topOfStack);
-      }
-      output.push(input[i]);
-    }
-    if (i == input.length - 1) {
-      var topOfStack = "";
-      while (stack.length > 0) {
-        topOfStack = stack.pop();
-        output.push(topOfStack);
-      }
-    }
-
+  
+  for(var i=0; i<input.length; i++)
+  {
+	  if(isNumber(input[i]) )
+	  {	 
+		  postfix.push(input[i]);
+	  }
+	  else if(isOperator(input[i]) )
+	  {
+		  //when an operator is read, pop the stack onto postfix until the top of the stack has an element of lower precedence, then push the operator
+		  
+		  //if the current operator has equal precedence, pop the existing operators onto the postfix until there is a operator of lower priority, then push the current
+		  if(stack.length<1 | hasPrecedence(input[i],stack[stack.length-1])==1 )
+		  {
+			  stack.push(input[i])
+		  }
+		  else if(!hasPrecedence(input[i],stack[stack.length-1]) )
+		  {
+			  //current operator has equal precedence to the top of the stack
+			  while(stack.length>0 && (hasPrecedence(input[i], stack[stack.length-1])==1 | hasPrecedence(input[i], stack[stack.length-1])==1)  )
+			  {
+				  postfix.push(stack.pop());
+			  }
+			   stack.push(input[i]);
+		  }
+		  else
+		  {
+			  //current operator has greater precedence to the top of the stack
+			  postfix.push(stack.pop());
+			  stack.push(input[i]);
+		  }
+		  
+	  }
+  else if(input[i]=="(")
+  {
+	  //when input "(" has the highest priority, when read it is the lowest
+	  stack.push("(");
   }
-  return output;
+  else if(input[i]==")" )
+  {
+	  //when "(", pop the stack onto postfix until "(" is read
+	  while(stack.top()!="(" )
+	  {
+		    postfix.push(stack.pop());
+	  }
+	  
+	  stack.pop();
+  }
+  else if(input=="")
+  {
+	  continue;
+  }
+  
+  }
+  
+  while(stack.length>0)
+  {
+	  postfix.push(stack.pop());
+  }
+  return postfix;
+
 }
 
 function evaluate(input) {
@@ -253,6 +273,7 @@ function evaluate(input) {
     } else if (input[i] == "-") {
       var a = stack.pop();
       var b=0;
+	  //handle subtraction as a unary operator
       b=stack.length>0? stack.pop():0;
       stack.push(b - a);
     } else if (input[i] == "+") {
@@ -285,7 +306,7 @@ function getImpliedOperations(input) {
 }
 
 function hasPrecedence(a, b) {
-
+//does a have precedence over b
   var aVal = getPrecedenceLevel(a);
   var bVal = getPrecedenceLevel(b);
 
@@ -328,23 +349,14 @@ function getPrecedenceLevel(operator) {
 function isOperator(value) {
   switch (value) {
     case "!":
-      return true;
     case "^":
-      return true;
     case "+":
-      return true;
     case "-":
-      return true;
     case "/":
-      return true;
     case "x":
-      return true;
     case "X":
-      return true;
     case "*":
-      return true;
-    case "%":
-      return true;
+    case "%": return true;
     default:
       return false;
   }

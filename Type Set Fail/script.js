@@ -66,7 +66,6 @@ function letterPress()
 		document.getElementsByClassName("text-box")[0].value="";
 		input=text_box_value;
 		$(".text-box").disabled=true;
-		//$(".text-box").hide
 		return;
 	}
 	
@@ -119,6 +118,7 @@ function win()
 	$(".restart-btn").html("Next");
 	$("#info-block").html("WINNER!");
 	phase=3;
+	rounds_won++;
 }
 
 function lose(){
@@ -173,6 +173,7 @@ function setPhase2()
 	updateTime(round_time);
 	phase=2;
 	setTextBox();
+	rounds_played++;
 	timer=setInterval(updateTime,1000);
 	
 }
