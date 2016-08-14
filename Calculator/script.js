@@ -122,7 +122,8 @@ $(document).ready(function() {
       var inputs = output.split("");
       var lastChar = "";
       //group values in stack
-      stack = clumpNumbers(inputs).split(" ");
+      stack = clumpNumbers(inputs);//.split(" ");
+	  stack=stack.split(" ");
       // insert implied operations
       stack = getImpliedOperations(stack);
       // convert the outstring to postfix
@@ -223,7 +224,7 @@ function getPostfix(input) {
   else if(input[i]==")" )
   {
 	  //when "(", pop the stack onto postfix until "(" is read
-	  while(stack.top()!="(" )
+	  while(stack[stack.length-1]!="(" )
 	  {
 		    postfix.push(stack.pop());
 	  }
@@ -288,7 +289,9 @@ function evaluate(input) {
 function getImpliedOperations(input) {
   var output = "";
   var lastChar = "";
-
+ //input=input.split(" ");
+ input=input.join("");
+ 
   for (var i in input) {
     if (input[i] == "(" && isNumber(lastChar)) {
       output += " * (";
@@ -296,7 +299,12 @@ function getImpliedOperations(input) {
     } else if (isNumber(input[i]) && lastChar == ")") {
       output += " * " + input[i];
       lastChar = input[i];
-    } else {
+    }
+	else if(input[i]=="(" && lastChar==")"){
+		output+=" * (";
+		lastChar="(";
+	}
+	else {
       output += " " + input[i];
       lastChar = input[i];
     }
