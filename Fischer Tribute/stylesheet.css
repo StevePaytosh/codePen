@@ -1,0 +1,33 @@
+#main-img{
+	height:250px;
+	width: 250px;
+}
+
+.title{
+	text-align-last: center;
+}
+
+.secondary-title{
+	text-align-last: center;
+}
+
+#biography-body{
+	margin-left:10vw;
+	background-color:lightgray;
+}
+
+#main-body{
+	border-style:solid;
+	border-color:black;
+	background-color:white;
+}
+
+#profile{
+	border-style:solid;
+	border-color:black;
+	background-color:white;
+}
+
+#main-img{
+	margin-top:10px;
+}
