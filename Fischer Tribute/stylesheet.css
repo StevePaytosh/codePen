@@ -31,3 +31,36 @@
 #main-img{
 	margin-top:10px;
 }
+
+table {
+  font-size: 35pt;
+  color: #000;
+  border:3px solid #666;
+  width: 580px;
+  height: 580px;
+  margin: 20px;
+}
+
+td {
+  background:#fff;
+  height:70px;
+  width:70px;
+  text-align:center;
+}
+
+tr:nth-child(odd) td:nth-child(even),
+tr:nth-child(even) td:nth-child(odd) {
+  background:#6c0;
+}
+
+#shuffle{
+	margin-left:20vw;
+	font-weight:bold;
+	background-color:lightblue;	
+}
+
+#reset{
+	font-weight:bold;
+	background-color:red;
+
+}

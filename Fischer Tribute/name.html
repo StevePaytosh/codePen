@@ -45,6 +45,76 @@ In 1992 he reemerged to win an unofficial rematch against Spassky. It was held i
 </div>
 </body>
 
-<body id="fischer-random-body">
-<h1 class="title">Fischer Random Board</h1>
+<body class="fischer-random">
+<h1 class="tltle">Fischer Random Board Generator</h1>
+<div id="random-intro">
+Fischer random chess is designed to remove the common strategies of the game by switching the scrambling the pieces on the first and last ranks (rows).<br>
+In order for a random set to be valid set up. It must follow the following:<p>
+<ul>
+<li>The king must reside between the two rooks</li>
+<li>The bishops must reside on opposite colors</li>
+<li>The black and white pieces must be in the same order</li>
+</ul>
+<p>
+Here you can click on "new board" to get one of 960 starting combinations of fischer random chess.<br>
+You may also reset the board to view the traditional layout of chess pieces.
+</div>
+<table class="board">
+  <tr>
+    <td id="a8">&#9820;</td>
+    <td id="b8">&#9822;</td>
+    <td id="c8">&#9821;</td>
+    <td id="d8">&#9819;</td>
+    <td id="e8">&#9818;</td>
+    <td id="f8">&#9821;</td>
+    <td id="g8">&#9822;</td>
+    <td id="h8">&#9820;</td>
+  </tr>
+  <tr>
+    <td id="a7">&#9823;</td>
+    <td id="b7">&#9823;</td>
+    <td id="c7">&#9823;</td>
+    <td id="d7">&#9823;</td>
+    <td id="e7">&#9823;</td>
+    <td id="f7">&#9823;</td>
+    <td id="g7">&#9823;</td>
+    <td id="h7">&#9823;</td>
+  </tr>
+  <tr>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+  </tr>
+  <tr>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+  </tr>
+  <tr>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+  </tr>
+  <tr>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+  </tr>
+  <tr>
+    <td id="a2">&#9817;</td>
+    <td id="b2">&#9817;</td>
+    <td id="c2">&#9817;</td>
+    <td id="d2">&#9817;</td>
+    <td id="e2">&#9817;</td>
+    <td id="f2">&#9817;</td>
+    <td id="g2">&#9817;</td>
+    <td id="h2">&#9817;</td>
+  </tr>
+  <tr>
+    <td id="a1">&#9814;</td>
+    <td id="b1">&#9816;</td>
+    <td id="c1">&#9815;</td>
+    <td id="d1">&#9813;</td>
+    <td id="e1">&#9812;</td>
+    <td id="f1">&#9815;</td>
+    <td id="g1">&#9816;</td>
+    <td id="h1">&#9814;</td>
+  </tr>
+</table>
+
+<button type="button" id="shuffle">New Board</button>
+<button type="button" id="reset">Reset Board</button>
+
 </body>
