@@ -45,6 +45,28 @@ $(document).ready(function(){
 		
 	
 	});
+	
+	$("#reset").click(function(){
+		
+	$("#a1").html(white["rook"]);
+	$("#b1").html(white["knight"]);
+	$("#c1").html(white["bishop"]);
+	$("#d1").html(white["queen"]);
+	$("#e1").html(white["king"]);
+	$("#f1").html(white["bishop"]);
+	$("#g1").html(white["knight"]);
+	$("#h1").html(white["rook"]);
+	
+	$("#a8").html(black["rook"]);
+	$("#b8").html(black["knight"]);
+	$("#c8").html(black["bishop"]);
+	$("#d8").html(black["queen"]);
+	$("#e8").html(black["king"]);
+	$("#f8").html(black["bishop"]);
+	$("#g8").html(black["knight"]);
+	$("#h8").html(black["rook"]);
+		
+	});
 });
 
 function createNewFischer(){
