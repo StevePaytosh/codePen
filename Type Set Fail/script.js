@@ -252,11 +252,11 @@ function displayDiff()
 	{
 		//read 2 values at a time. The first value is the antecedant (say A), the second will be the consquent (say R). 
 		// if a usser types A they will get R instead, they will be in the array in that order {A,R,...}
-	
-		if(i!=0 && i%4==0)
-		result+="<td>"+String.fromCharCode(no_scramble[diff_scramble[i++]]) + " &#10132 " + String.fromCharCode(diff_scramble[i]) + "</td></tr><tr>";
+		
+		if(i%6<4) // 4 is the magic number that allows this configuration to print rows of 3...
+			result+="<td>"+String.fromCharCode(no_scramble[diff_scramble[i++]]) + " &#10132 " + String.fromCharCode(diff_scramble[i]) + "</td>";
 		else
-		result+="<td>"+String.fromCharCode(no_scramble[diff_scramble[i++]]) + " &#10132 " + String.fromCharCode(diff_scramble[i]) + "</td>";
+			result+="<td>"+String.fromCharCode(no_scramble[diff_scramble[i++]]) + " &#10132 " + String.fromCharCode(diff_scramble[i]) + "</td></tr><tr>";
 	}
 	result+="</tr></table>";
 	return result;
