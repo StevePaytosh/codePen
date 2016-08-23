@@ -55,6 +55,9 @@ font-size: 30pt;
 	font-size:25pt;
 }
 
-td{
-	padding:2px;
+table.scramble{
+	color:white;
+	border-collapse:separate !important;
+	border-spacing:10px !important;
+
 }

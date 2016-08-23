@@ -246,7 +246,7 @@ function getScrambledChars()
 function displayDiff()
 {
 	var size=diff_scramble.length;
-	var result="<table> <tr>";
+	var result="<table class=\"scramble\"> <tr>";
 	
 	for(var i=0; i<size; i++)
 	{
@@ -254,9 +254,9 @@ function displayDiff()
 		// if a usser types A they will get R instead, they will be in the array in that order {A,R,...}
 	
 		if(i!=0 && i%4==0)
-		result+="<td>"+String.fromCharCode(no_scramble[diff_scramble[i++]]) + " --> " + String.fromCharCode(diff_scramble[i]) + "</td></tr><tr>";
+		result+="<td>"+String.fromCharCode(no_scramble[diff_scramble[i++]]) + " &#10132 " + String.fromCharCode(diff_scramble[i]) + "</td></tr><tr>";
 		else
-		result+="<td>"+String.fromCharCode(no_scramble[diff_scramble[i++]]) + " --> " + String.fromCharCode(diff_scramble[i]) + "</td>";
+		result+="<td>"+String.fromCharCode(no_scramble[diff_scramble[i++]]) + " &#10132 " + String.fromCharCode(diff_scramble[i]) + "</td>";
 	}
 	result+="</tr></table>";
 	return result;
