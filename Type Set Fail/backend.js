@@ -1,17 +1,8 @@
-function getScramble(difficulty)
+function getScramble(scrambles)
 {
-	//function receives a difficulty, and converts that into the of swaps that should be made to scramble the keyboard
-	//difficulty levels 1=> 5 scramble,  2 => 7 scrambles, 3 => 12 scrambles
-	var scrambles=0;
-	switch(difficulty)
-	{
-		case 0: scrambles=10; break;
-		case 1: scrambles=15; break;
-		case 2: scrambles=25; break;
-		default: scrambles=15; break;
-	}
+	//function receives the number of swaps that should be made in the array and returns an array that has had that many swaps made
 	
-	var result=[65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90];
+	var result=[65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90]; //default array, consistent with letter in alphabetical order
 	
 	for(var i=0; i<scrambles/2; i++)
 	{
