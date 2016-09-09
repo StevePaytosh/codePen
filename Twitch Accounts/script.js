@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var channels = ["vihart","beohoff","brunofish","comster404","freecodecamp","habathcx","MedryBW", "noobs2ninjas", "RobotCaleb","storbeck", "terakilobyte",   "thomasballinger"];
+  var channels = ["vihart","beohoff","brunofish","comster404","destructroncore","freecodecamp","habathcx","MedryBW", "noobs2ninjas", "RobotCaleb","saltybet","storbeck", "terakilobyte", "thomasballinger"];
   var rowTemplate = $("#myTemplate").text();
   var headerTemplate = $("#header-template").text();
   var firstLoad = true;
