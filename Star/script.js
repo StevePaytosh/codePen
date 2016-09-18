@@ -6,6 +6,7 @@ var columns=10; // hypothetically unlimited
 
 $(document).ready(function(){
 	
+	max_stars=rows*columns;
   buildHTML();
   $(".star-cell").on("click", function(){
     console.log("clicked on star");
@@ -33,21 +34,21 @@ function increment()
 function setStars()
 {
   for(var i=0; i<max_stars; i++)
-    {
+    { //clear any existing stars
        var location="#";
-     location+=getRow(i);
-     location+=(i%rows)+1;
+     location+=getRow(Math.floor(i/columns));
+     location+=(i%columns)+1;
      $(location).html("");
   
     }
   var partition=max_stars/current_stars;
   var sky=[];
-// setStars(sky,partition);
+
   for(var i=partition-1; i<=max_stars; i+=partition)
    {
      var location="#";
-     location+=getRow(Math.floor(i/8));
-     location+=Math.floor(i%rows)+1;
+     location+=getRow(Math.floor(i/columns));
+     location+=Math.floor(i%columns)+1;
      $(location).html(randomStar());
      console.log("created a star for: "+ location);
       
