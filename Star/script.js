@@ -3,6 +3,16 @@ var max_stars=64;
 var scale_up=true;
 var rows=3; //max 20
 var columns=10; // hypothetically unlimited
+var sound = [];
+sound[0] = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3");
+sound[1] = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3");
+sound[2] = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3");
+sound[3] = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
+var playbackRate = .7
+sound[0].playbackRate = playbackRate;
+sound[1].playbackRate = playbackRate;
+sound[2].playbackRate = playbackRate;
+sound[3].playbackRate = playbackRate;
 
 $(document).ready(function(){
 	
@@ -51,8 +61,11 @@ function setStars()
    }
 
    //bind stars to the DOM
-    $(".star").on("click", function(){
+    $(".star").on("click", function(e){
     console.log("clicked on star");
+	e=e.currentTarget.attributes.soundid.nodeValue
+console.log("playing sound: "+ e);
+	sound[e].play();
      increment();
     setStars();
   });
@@ -110,8 +123,9 @@ function randomStar(){
   
   var color= getColor();
   var code=getStarCode();
+  var star_sound=Math.floor(Math.random()*sound.length);
   
-  return "<h2 class=\"star\" style = \" color:"+color+"\">"+code+"</h2>";
+  return "<h2 class=\"star\" style = \" color:"+color+"\" soundid=\""+star_sound+"\">"+code+"</h2>";
 }
 
 function getColor()
