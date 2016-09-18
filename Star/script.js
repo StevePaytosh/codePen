@@ -8,11 +8,7 @@ $(document).ready(function(){
 	
 	max_stars=rows*columns;
   buildHTML();
-  $(".star-cell").on("click", function(){
-    console.log("clicked on star");
-     increment();
-    setStars();
-  });
+ 
   
   setStars();
 });
@@ -53,8 +49,14 @@ function setStars()
      console.log("created a star for: "+ location);
       
    }
-  //$("#a1").html(randomStar());
 
+   //bind stars to the DOM
+    $(".star").on("click", function(){
+    console.log("clicked on star");
+     increment();
+    setStars();
+  });
+  
   return current_stars;
 }
 

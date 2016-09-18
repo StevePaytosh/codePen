@@ -1,7 +1,7 @@
 .star-cell{
   width:100px;
   height:100px;
-border: solid black;
+/* border: solid black; */
   font-size:35pt;
   font-weight:bold;
   text-align:center;
