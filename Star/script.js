@@ -1,6 +1,7 @@
 var current_stars=1;
 var max_stars=64;
 var scale_up=true;
+var last_increment=1;
 var rows=3; //max 20
 var columns=10; // hypothetically unlimited
 var sound = [];
@@ -16,7 +17,7 @@ sound[3].playbackRate = playbackRate;
 
 $(document).ready(function(){
 	
-	max_stars=rows*columns;
+  max_stars=rows*columns;
   buildHTML();
  
   
@@ -25,15 +26,27 @@ $(document).ready(function(){
 
 function increment()
 {
-  if(current_stars==max_stars)
+  if(current_stars>=max_stars)
+  {
     scale_up=false;
-  else if(current_stars==1)
+	last_increment=0;
+  }
+  else if(current_stars<=1){
     scale_up=true;
+	last_increment=0;
+  }
+  
+  last_increment++;
   
   if(scale_up)
-    current_stars*=2;
+    current_stars+=last_increment;
   else
-    current_stars/=2;
+    current_stars-=last_increment;
+  
+  if(current_stars>=max_stars)
+	  current_stars=max_stars;
+  else if(current_stars<=1)
+	  current_stars=1;
   
   return current_stars;
 }
