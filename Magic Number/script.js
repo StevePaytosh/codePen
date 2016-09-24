@@ -5,17 +5,18 @@ $(document).ready(function(){
  // runTest();
 
   $("#calculate").on("click", function(){
-     
   var values=getFormValues();
-   
   var results=calculateMagicNumber(values);
-    
-    
-    $("#result").html("Magic Number <br>" + "Team " + leading_team + ": "  + results);
+  $("#result").html("Magic Number <br>" + "Team " + leading_team + ": "  + results);
   })
   
    $("#clear").on("click", function(){
     $("#result").html("");
+	document.getElementById("total_games").value="games per season";
+  document.getElementById("team_a_wins").value="wins";    
+  document.getElementById("team_a_losses").value="losses";  
+  document.getElementById("team_b_wins").value="wins";
+  document.getElementById("team_b_losses").value="losses";
   })
  	
   
@@ -24,7 +25,9 @@ $(document).ready(function(){
 
 function runTest(){
   document.getElementById("total_games").value=162;
-  document.getElementById("team_a_wins").value=83;    document.getElementById("team_a_losses").value=59;  document.getElementById("team_b_wins").value=76;
+  document.getElementById("team_a_wins").value=83;    
+  document.getElementById("team_a_losses").value=59;  
+  document.getElementById("team_b_wins").value=76;
   document.getElementById("team_b_losses").value=66;
 
 };
