@@ -37,7 +37,30 @@ $(document).ready(function(){
   leading_team=true;
   })
  	
+	$(".input-box").on("click",function(e){
+   $(this).select();
+  });
+	
+/*   $("#total_games").on("click",function(e){
+   $("#total_games").select();
+  });
   
+   $("#team_a_wins").on("click",function(e){
+   $("#team_a_wins").select();
+  });
+  
+   $("#team_a_losses").on("click",function(e){
+   $("#team_a_losses").select();
+  });
+  
+   $("#team_b_wins").on("click",function(e){
+   $("#team_b_wins").select();
+  });
+  
+   $("#team_b_losses").on("click",function(e){
+   $("#team_b_losses").select();
+  }); 
+  */
 });  
 
 
