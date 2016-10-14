@@ -21,7 +21,7 @@ $(document).ready(function(){
   buildHTML();
  
   
-  setStars();
+  setInitStars();
 });
 
 function increment()
@@ -50,13 +50,17 @@ function increment()
   
   return current_stars;
 }
-function setStars()
+function setStars(a)
 {
+	a="#"+a;
+	console.log("set stars with param: "+a);
   for(var i=0; i<max_stars; i++)
-    { //clear any existing stars
-       var location="#";
+    { //clear any existing stars except the last clicked item
+     var location="#";
      location+=getRow(Math.floor(i/columns));
      location+=(i%columns)+1;
+	 if(location == a)
+		continue;
      $(location).html("");
   
     }
@@ -68,22 +72,32 @@ function setStars()
      var location="#";
      location+=getRow(Math.floor(i/columns));
      location+=Math.floor(i%columns)+1;
-     $(location).html(randomStar());
-     console.log("created a star for: "+ location);
+	 if(location!=a)
+	 {
+		$(location).html(randomStar());
+		console.log("created a star for: "+ location);
+	 }
       
    }
 
    //bind stars to the DOM
     $(".star").on("click", function(e){
     console.log("clicked on star");
+	var id=e.currentTarget.parentElement.id;
 	e=e.currentTarget.attributes.soundid.nodeValue
 console.log("playing sound: "+ e);
 	sound[e].play();
      increment();
-    setStars();
+    setStars(id);
   });
   
   return current_stars;
+}
+
+function setInitStars()
+{
+	console.log("set stars empty");
+	setStars("-1");
 }
 
 function buildHTML()
