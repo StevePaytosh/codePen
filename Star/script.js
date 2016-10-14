@@ -19,9 +19,8 @@ $(document).ready(function(){
 	
   max_stars=rows*columns;
   buildHTML();
- 
   
-  setInitStars();
+  setStars("-1"); //initialize the screen with a star
 });
 
 function increment()
@@ -53,7 +52,6 @@ function increment()
 function setStars(a)
 {
 	a="#"+a;
-	console.log("set stars with param: "+a);
   for(var i=0; i<max_stars; i++)
     { //clear any existing stars except the last clicked item
      var location="#";
@@ -92,12 +90,6 @@ console.log("playing sound: "+ e);
   });
   
   return current_stars;
-}
-
-function setInitStars()
-{
-	console.log("set stars empty");
-	setStars("-1");
 }
 
 function buildHTML()
