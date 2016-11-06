@@ -18,6 +18,17 @@ $(document).ready(function(){
 		$("#num5").html(arr[4]);
 		$("#num6").html(arr[5]);
   });
+  
+  $("#random-ticket").on("click",function(){
+	  	var arr=playPowerBall();
+		
+		$("#ticket1").html(arr[0]);
+		$("#ticket2").html(arr[1]);
+		$("#ticket3").html(arr[2]);
+		$("#ticket4").html(arr[3]);
+		$("#ticket5").html(arr[4]);
+		$("#ticket6").html(arr[5]);
+  })
  
 });
 
