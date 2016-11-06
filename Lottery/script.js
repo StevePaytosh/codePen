@@ -1,4 +1,9 @@
 //powerball rules 5 white balls (1-69) 1 red (1-26)
+var games_played=0;
+var total_won=0;
+var total_spent=0;
+var current_wager=0;
+var won_this_draw=0;
 $(document).ready(function(){
 	var ticket=[]=playPowerBall();
 	$("ticket1").html(ticket[0]);
@@ -9,6 +14,9 @@ $(document).ready(function(){
 	$("ticket6").html(ticket[5]);
 	
 	$("#single-play").on("click", function() {
+		current_wager=2;
+		games_played++;
+		total_spent+=current_wager;
 		var arr=playPowerBall();
 		
 		$("#num1").html(arr[0]);
@@ -17,6 +25,15 @@ $(document).ready(function(){
 		$("#num4").html(arr[3]);
 		$("#num5").html(arr[4]);
 		$("#num6").html(arr[5]);
+		
+		//calculate winnings
+		
+		//print out stats
+		$("#wager").html("$"+current_wager);
+		$("#games-played").html(games_played);
+		$("#amount-won").html("$"+total_won);
+		$("#amount-played").html("$"+total_spent);
+		$("#draw-won").html("$"+won_this_draw);
   });
   
   $("#random-ticket").on("click",function(){
