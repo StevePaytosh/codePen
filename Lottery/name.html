@@ -8,7 +8,9 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 <html>
-<div id="stats-box">
+<div class="row app">
+
+<div id="stats-box" class="col-xs-3">
 <table>
 <tr><td>Games Played</td><td id="games-played"></td></tr>
 <tr><td>Wager</td><td id="wager"></td></tr>
@@ -18,6 +20,7 @@
 </table>
 <button id="reset-stats">Reset</button>
 </div>
+<div class="numbers col-xs-5">
 <div class="ticket">
 <table>
 <tr>
@@ -29,7 +32,7 @@
 <td id="ticket6" class="ticket">7</td>
 </tr>
 </table>
-<button class="random-btn" id="random-ticket">Select Random Ticket</button>
+<button class="random-btn" id="random-ticket">New Ticket</button>
 <div>
 
 <div class="output-box">
@@ -43,7 +46,10 @@
 <td id="num6" class="red-ball">7</td>
 </tr>
 </table>
-<button class="play-btn" id="single-play">Play Again</button>
-<button class="play-btn" id="full-play">Play To Winn</button>
-<div>
+<button class="play-btn" id="single-play">Single Draw</button>
+<button class="play-btn" id="win-play">Draw Till Win</button>
+<button class="play-btn" id="jackpot-play">Draw Till JackPot</button>
+</div>
+</div>
+</div>
 </html>

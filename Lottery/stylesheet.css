@@ -1,3 +1,13 @@
 .white-ball,#red-ball,.ticket{
 	padding: 15px;
 }
+
+.app{
+margin: 30vh 10px 10px 10vw;
+
+}
+
+#stats-box
+{
+	margin-left:15px;
+}

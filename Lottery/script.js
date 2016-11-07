@@ -4,50 +4,22 @@ var total_won=0;
 var total_spent=0;
 var current_wager=0;
 var won_this_draw=0;
+var ticket;
 $(document).ready(function(){
-	var ticket=playPowerBall();
+	ticket=playPowerBall();
 	setTicket(ticket);
 
-	$("#single-play").on("click", function() {
-		current_wager=2;
-		games_played++;
-		total_spent+=current_wager;
-		var arr=playPowerBall();
-
-		setTicket(ticket); //clear any marks from the ticket
-		setPull(arr);
-		
-		//calculate winnings
-		var results=calculateMatches(ticket,arr,"powerball");
-		
-		if(results!=0)
-		{
-			console.log("match found\nticket: "+results.highlight_ticket+"\npull: "+results.highlight_pull+"\nticket: "+ticket+"\npull   :"+arr+"\n");
-				for(var i=0;i<(results.highlight_ticket).length;i++)
-				{
-					$("#ticket"+(results.highlight_ticket[i]+1)).html("<mark>"+ticket[results.highlight_ticket[i]]+"</mark>");
-					$("#num"+(results.highlight_pull[i]+1)).html("<mark>"+arr[results.highlight_pull[i]]+"</mark>");
-				}
-				
-			if(results.pbMatch)
-			{
-				$("#ticket"+(ticket.length) ).html("<mark>"+ticket[ticket.length-1]+"</mark>");
-				$("#ticket"+(arr.length) ).html("<mark>"+arr[arr.length-1]+"</mark>");
-			}
-			
-			won_this_draw=results.payout;
-			total_won+=won_this_draw;
-		}
-		
-		//print out stats
-		$("#wager").html("$"+current_wager);
-		$("#games-played").html(games_played);
-		$("#amount-won").html("$"+total_won);
-		$("#amount-played").html("$"+total_spent);
-		$("#draw-won").html("$"+won_this_draw);
-		
+	$("#single-play").on("click", singlePlay );
+	$("#win-play").on("click",playTillWin);
+	$("#jackpot-play").on("click",playTillJackpot);
+	$("#reset-stats").on("click",function(){
+		games_played=0;
+		total_won=0;
+		total_spent=0;
+		current_wager=0;
 		won_this_draw=0;
-  });
+		updateStats();
+	});
   
   $("#random-ticket").on("click",function(){
 	  	var arr=playPowerBall();
@@ -130,7 +102,7 @@ function playPowerBall()
 	}
 	
 	arr[5]=randomBall(26);
-	console.log("powerball: "+arr[0]+" "+ arr[1]+" " + arr[2] + " " +arr[3]+ " " + arr[4]+ " "+arr[5] );
+//	console.log("powerball: "+arr[0]+" "+ arr[1]+" " + arr[2] + " " +arr[3]+ " " + arr[4]+ " "+arr[5] );
 	return arr;
 }
 
@@ -221,4 +193,73 @@ function setPull(pull)
 	{
 		$("#num"+(i+1)).html(pull[i]);
 	}
+}
+
+function singlePlay()
+{
+	current_wager=2;
+		games_played++;
+		total_spent+=current_wager;
+		var arr=playPowerBall();
+
+		setTicket(ticket); //clear any marks from the ticket
+		setPull(arr);
+		
+		//calculate winnings
+		var results=calculateMatches(ticket,arr,"powerball");
+		
+		if(results!=0)
+		{
+			//console.log("match found\nticket: "+results.highlight_ticket+"\npull: "+results.highlight_pull+"\nticket: "+ticket+"\npull   :"+arr+"\n");
+				for(var i=0;i<(results.highlight_ticket).length;i++)
+				{
+					$("#ticket"+(results.highlight_ticket[i]+1)).html("<mark>"+ticket[results.highlight_ticket[i]]+"</mark>");
+					$("#num"+(results.highlight_pull[i]+1)).html("<mark>"+arr[results.highlight_pull[i]]+"</mark>");
+				}
+				
+			if(results.pbMatch)
+			{
+				$("#ticket"+(ticket.length) ).html("<mark>"+ticket[ticket.length-1]+"</mark>");
+				$("#num"+(arr.length) ).html("<mark>"+arr[arr.length-1]+"</mark>");
+			}
+			
+			won_this_draw=results.payout;
+			total_won+=won_this_draw;
+		}
+		
+		//print out stats
+		updateStats();
+		
+		won_this_draw=0; 
+		return results;
+}
+
+function playTillWin()
+{
+	while(true)
+	{
+		var results=singlePlay();
+		if(results.payout>0)
+			break;
+	}
+}
+
+function playTillJackpot()
+{
+	while(true)
+	{
+		var results=singlePlay();
+		if(results.payout=="Jackpot")
+			break;
+	}
+}
+
+function updateStats()
+{
+	$("#wager").html("$"+current_wager);
+		$("#games-played").html(games_played);
+		$("#amount-won").html("$"+total_won);
+		$("#amount-played").html("$"+total_spent);
+		$("#draw-won").html("$"+won_this_draw);
+		
 }
