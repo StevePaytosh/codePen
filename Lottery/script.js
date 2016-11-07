@@ -28,6 +28,15 @@ $(document).ready(function(){
 					$("#ticket"+(results.highlight_ticket[i]+1)).html("<mark>"+ticket[results.highlight_ticket[i]]+"</mark>");
 					$("#num"+(results.highlight_pull[i]+1)).html("<mark>"+arr[results.highlight_pull[i]]+"</mark>");
 				}
+				
+			if(results.pbMatch)
+			{
+				$("#ticket"+(ticket.length) ).html("<mark>"+ticket[ticket.length-1]+"</mark>");
+				$("#ticket"+(arr.length) ).html("<mark>"+arr[arr.length-1]+"</mark>");
+			}
+			
+			won_this_draw=results.payout;
+			total_won+=won_this_draw;
 		}
 		
 		//print out stats
@@ -36,6 +45,8 @@ $(document).ready(function(){
 		$("#amount-won").html("$"+total_won);
 		$("#amount-played").html("$"+total_spent);
 		$("#draw-won").html("$"+won_this_draw);
+		
+		won_this_draw=0;
   });
   
   $("#random-ticket").on("click",function(){
