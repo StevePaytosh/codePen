@@ -7,13 +7,7 @@ var won_this_draw=0;
 $(document).ready(function(){
 	var ticket=playPowerBall();
 	setTicket(ticket);
-	/*$("ticket1").html(ticket[0]);
-	$("ticket2").html(ticket[1]);
-	$("ticket3").html(ticket[2]);
-	$("ticket4").html(ticket[3]);
-	$("ticket5").html(ticket[4]);
-	$("ticket6").html(ticket[5]);
-	*/
+
 	$("#single-play").on("click", function() {
 		current_wager=2;
 		games_played++;
@@ -28,10 +22,11 @@ $(document).ready(function(){
 		
 		if(results!=0)
 		{
+			console.log("match found\nticket: "+results.highlight_ticket+"\npull: "+results.highlight_pull+"\nticket: "+ticket+"\npull   :"+arr+"\n");
 				for(var i=0;i<(results.highlight_ticket).length;i++)
 				{
-					$("#ticket"+results.highlight_ticket[i]).html("<mark>"+ticket[results.highlight_ticket[i]]+"</mark>");
-					$("#num"+results.highlight_pull[i]).html("<mark>"+arr[results.highlight_pull[i]]+"</mark>");
+					$("#ticket"+(results.highlight_ticket[i]+1)).html("<mark>"+ticket[results.highlight_ticket[i]]+"</mark>");
+					$("#num"+(results.highlight_pull[i]+1)).html("<mark>"+arr[results.highlight_pull[i]]+"</mark>");
 				}
 		}
 		
@@ -141,14 +136,13 @@ function calculateMatches(ticket,pull,game)
 			if(ticket[i]==pull[j])
 			{
 				whiteBallCount++;
-				results.highlight_ticket[whiteBallCount-1]=i;
-				results.highlight_pull[whiteBallCount-1]=j;
+				//results.highlight_ticket[whiteBallCount-1]=i;
+				//results.highlight_pull[whiteBallCount-1]=j;
+				results.highlight_ticket.push(i);
+				results.highlight_pull.push(j);
 			}
 		}
 	}
-	
-	if(matchesPB)
-		whiteBallCount--;
 	
 	if (whiteBallCount==0 && !matchesPB) //if nothing matches, return 0
 		return 0;
