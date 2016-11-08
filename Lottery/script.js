@@ -4,7 +4,8 @@ var total_won=0;
 var total_spent=0;
 var current_wager=0;
 var won_this_draw=0;
-var ticket;
+var ticket=[];
+var pull=[];
 $(document).ready(function(){
 	ticket=playPowerBall();
 	setTicket(ticket);
@@ -22,14 +23,14 @@ $(document).ready(function(){
 	});
   
   $("#random-ticket").on("click",function(){
-	  	var arr=playPowerBall();
+	  	ticket=playPowerBall();
 		
-		$("#ticket1").html(arr[0]);
-		$("#ticket2").html(arr[1]);
-		$("#ticket3").html(arr[2]);
-		$("#ticket4").html(arr[3]);
-		$("#ticket5").html(arr[4]);
-		$("#ticket6").html(arr[5]);
+		$("#ticket1").html(ticker[0]);
+		$("#ticket2").html(ticket[1]);
+		$("#ticket3").html(ticket[2]);
+		$("#ticket4").html(ticket[3]);
+		$("#ticket5").html(ticket[4]);
+		$("#ticket6").html(ticket[5]);
   })
  
 });
@@ -51,7 +52,7 @@ function playGame( game)
 function playPowerBall()
 {
 	//powerball rules 5 white balls (1-69) 1 red (1-26)
-	var arr=[randomBall(69),randomBall(69),randomBall(69),randomBall(69),randomBall(69),-1];
+	arr=[randomBall(69),randomBall(69),randomBall(69),randomBall(69),randomBall(69),-1];
 	
 	while(true)
 	{
@@ -179,7 +180,7 @@ function calculateWinnings(whiteBallCount,matchesPB,game)
 		
 }
 
-function setTicket(ticket)
+function setTicket()
 {
 	for(var i=0;i<ticket.length;i++)
 	{
@@ -187,7 +188,7 @@ function setTicket(ticket)
 	}
 }
 
-function setPull(pull)
+function setPull()
 {
 	for(var i=0;i<pull.length;i++)
 	{
@@ -200,29 +201,16 @@ function singlePlay()
 	current_wager=2;
 		games_played++;
 		total_spent+=current_wager;
-		var arr=playPowerBall();
+		pull=playPowerBall();
 
 		setTicket(ticket); //clear any marks from the ticket
-		setPull(arr);
+		setPull(pull);
 		
 		//calculate winnings
 		var results=calculateMatches(ticket,arr,"powerball");
-		
 		if(results!=0)
 		{
-			//console.log("match found\nticket: "+results.highlight_ticket+"\npull: "+results.highlight_pull+"\nticket: "+ticket+"\npull   :"+arr+"\n");
-				for(var i=0;i<(results.highlight_ticket).length;i++)
-				{
-					$("#ticket"+(results.highlight_ticket[i]+1)).html("<mark>"+ticket[results.highlight_ticket[i]]+"</mark>");
-					$("#num"+(results.highlight_pull[i]+1)).html("<mark>"+arr[results.highlight_pull[i]]+"</mark>");
-				}
-				
-			if(results.pbMatch)
-			{
-				$("#ticket"+(ticket.length) ).html("<mark>"+ticket[ticket.length-1]+"</mark>");
-				$("#num"+(arr.length) ).html("<mark>"+arr[arr.length-1]+"</mark>");
-			}
-			
+			highlightMatches(results);
 			won_this_draw=results.payout;
 			total_won+=won_this_draw;
 		}
@@ -246,12 +234,38 @@ function playTillWin()
 
 function playTillJackpot()
 {
-	while(true)
+	var results
+	for(var i=0; i<1000000;i++)
 	{
-		var results=singlePlay();
+		current_wager=2;
+		games_played++;
+		total_spent+=current_wager;
+		pull=playPowerBall();
+
+		setTicket(); //clear any marks from the ticket
+		setPull();
+		
+		//calculate winnings
+		results=calculateMatches(ticket,arr,"powerball");
+		if(results!=0)
+		{
+		//	highlightMatches(results);
+			won_this_draw=results.payout;
+			total_won+=won_this_draw;
+		}
+		
+		//print out stats
+		//updateStats();
+		
+		won_this_draw=0; 
+		
 		if(results.payout=="Jackpot")
 			break;
 	}
+	
+	if(results!=0)
+		highlightMatches(results);
+	updateStats();
 }
 
 function updateStats()
@@ -263,3 +277,24 @@ function updateStats()
 		$("#draw-won").html("&nbsp;$"+won_this_draw);
 		
 }
+
+function highlightMatches(results)
+{
+	//input is an object that contains an array to highlight ticket and pull numbers, payout and powerball match
+	
+	console.log("match found\nticket: "+results.highlight_ticket+"\npull: "+results.highlight_pull+"\nticket: "+ticket+"\npull   :"+pull+"\n");
+	for(var i=0;i<(results.highlight_ticket).length;i++)
+	{
+		$("#ticket"+(results.highlight_ticket[i]+1)).html("<mark>"+ticket[results.highlight_ticket[i]]+"</mark>");
+		$("#num"+(results.highlight_pull[i]+1)).html("<mark>"+pull[results.highlight_pull[i]]+"</mark>");
+	}
+		
+	if(results.pbMatch)
+	{
+		$("#ticket"+(ticket.length) ).html("<mark>"+ticket[ticket.length-1]+"</mark>");
+		$("#num"+(pull.length) ).html("<mark>"+pull[arr.length-1]+"</mark>");
+	}
+	
+
+}
+
