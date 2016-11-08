@@ -35,3 +35,11 @@ table{
 color:white;
 font-size:15pt;
 }
+
+#loss{
+color:red;
+}
+
+#won{
+color:blue;
+}

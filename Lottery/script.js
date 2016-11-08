@@ -256,10 +256,10 @@ function playTillJackpot()
 
 function updateStats()
 {
-	$("#wager").html("$"+current_wager);
-		$("#games-played").html(games_played);
-		$("#amount-won").html("$"+total_won);
-		$("#amount-played").html("$"+total_spent);
-		$("#draw-won").html("$"+won_this_draw);
+	$("#wager").html("&nbsp;$"+current_wager);
+		$("#games-played").html("&nbsp;"+games_played);
+		$("#amount-won").html("&nbsp;$"+total_won);
+		$("#amount-played").html("&nbsp;$"+total_spent);
+		$("#draw-won").html("&nbsp;$"+won_this_draw);
 		
 }
