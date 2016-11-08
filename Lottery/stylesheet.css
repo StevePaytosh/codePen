@@ -4,10 +4,34 @@
 
 .app{
 margin: 30vh 10px 10px 10vw;
-
+position:relative;
 }
 
 #stats-box
 {
 	margin-left:15px;
+	padding: 15px 0 0 15px;
+	left:0;
+	box-shadow: 0px 10px lightgray;
+}
+
+#stats-box,.numbers{
+background-color:green;
+position:absolute;
+width:30vw;
+height: 20vw;
+min-height:150px;
+max-height:200px;
+color: black;
+font-weight: bold;
+}
+
+.numbers{
+left:30vw;
+box-shadow: 10px 10px lightgray;
+}
+
+table{
+color:white;
+font-size:15pt;
 }
