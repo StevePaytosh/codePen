@@ -107,7 +107,7 @@ function playPowerBall()
 	return arr;
 }
 
-function calculateMatches(ticket,pull,game)
+function calculateMatches(game)
 {	
 	var matchesPB= ticket[ticket.length-1]==pull[ticket.length-1];
 	var whiteBallCount=0;
@@ -133,6 +133,7 @@ function calculateMatches(ticket,pull,game)
 	
 	//if something matches, determine what is won based on the game
 	results.payout=calculateWinnings(whiteBallCount,matchesPB,game);
+	console.log("results:\nticket:"+results.highlight_ticket+"\npull: "+ results.highlight_pull+"\n payout: "+results.payout+"\n");
 	return results;
 	
 }
@@ -207,7 +208,7 @@ function singlePlay()
 		setPull(pull);
 		
 		//calculate winnings
-		var results=calculateMatches(ticket,arr,"powerball");
+		var results=calculateMatches("powerball");
 		if(results!=0)
 		{
 			highlightMatches(results);
@@ -235,7 +236,7 @@ function playTillWin()
 function playTillJackpot()
 {
 	var results
-	for(var i=0; i<1000000;i++)
+	for(var i=0; i<100;i++)
 	{
 		current_wager=2;
 		games_played++;
@@ -246,7 +247,7 @@ function playTillJackpot()
 		setPull();
 		
 		//calculate winnings
-		results=calculateMatches(ticket,arr,"powerball");
+		results=calculateMatches("powerball");
 		if(results!=0)
 		{
 		//	highlightMatches(results);
@@ -282,7 +283,7 @@ function highlightMatches(results)
 {
 	//input is an object that contains an array to highlight ticket and pull numbers, payout and powerball match
 	
-	console.log("match found\nticket: "+results.highlight_ticket+"\npull: "+results.highlight_pull+"\nticket: "+ticket+"\npull   :"+pull+"\n");
+	//console.log("match found\nticket: "+results.highlight_ticket+"\npull: "+results.highlight_pull+"\nticket: "+ticket+"\npull   :"+pull+"\n");
 	for(var i=0;i<(results.highlight_ticket).length;i++)
 	{
 		$("#ticket"+(results.highlight_ticket[i]+1)).html("<mark>"+ticket[results.highlight_ticket[i]]+"</mark>");
