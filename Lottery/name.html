@@ -10,9 +10,12 @@
 <html>
 
 <input onclick="check()" type="radio" name="game" value="powerball">Powerball</input>
-<input type="radio" name="game" value="mega">Mega Millions</input>
+<input onclick="check()" type="radio" name="game" value="mega">Mega Millions</input>
 <!-- <input type="radio" name="game" value="pick5">Pick 5</input>
 <input type="radio" name="game" value="pick3">Pick 3</input> -->
+<p>
+<input onclick="check()" type="radio" name="ticket-setting" value="new-ticket">new-ticket</input>
+<input onclick="check()" type="radio" name="ticket-setting" value="mega">-</input>
 <div class=" app">
 
 <div id="stats-box" class="">
@@ -29,7 +32,7 @@
 <div class="ticket">
 <table>
 <tr>
-<td id="ticket1" class="ticket">1</td>
+<td id="ticket1" class="ticket"><input type="text"></input></td>
 <td id="ticket2" class="ticket">2</td>
 <td id="ticket3" class="ticket">3</td>
 <td id="ticket4" class="ticket">4</td>

@@ -307,17 +307,16 @@ function highlightMatches(results)
 function check()
 {
 	var buttons=document.getElementsByTagName("input");
-	for each(var i=0; i<buttons.length; i++)
+	for (var i=0; i<buttons.length; i++)
 	{
-		if(radio[i].checked)
+		if(buttons[i].checked)
 		{
-			changeSettings(radio[i].name,radio[i].value);
+			changeSettings(buttons[i].name,buttons[i].value);
 		}
 	}
-	console.log("hellow world "+e);
 }
 
-function changeSetting(a,b)
+function changeSettings(a,b)
 {
 	if(a=="game")
 	{
@@ -331,7 +330,7 @@ function changeSetting(a,b)
 	}
 	else if(a="custom-ticket")
 	{
-		
+		//
 	}
 	
 	
