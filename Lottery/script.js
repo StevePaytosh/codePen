@@ -6,6 +6,7 @@ var current_wager=0;
 var won_this_draw=0;
 var ticket=[];
 var pull=[];
+var current_game="powerball";
 $(document).ready(function(){
 	ticket=playPowerBall();
 	setTicket(ticket);
@@ -20,6 +21,10 @@ $(document).ready(function(){
 		current_wager=0;
 		won_this_draw=0;
 		updateStats();
+	});
+	$(".game").on("click",function(){
+		
+		console.log(this);
 	});
   
   $("#random-ticket").on("click",function(){
@@ -299,3 +304,35 @@ function highlightMatches(results)
 
 }
 
+function check()
+{
+	var buttons=document.getElementsByTagName("input");
+	for each(var i=0; i<buttons.length; i++)
+	{
+		if(radio[i].checked)
+		{
+			changeSettings(radio[i].name,radio[i].value);
+		}
+	}
+	console.log("hellow world "+e);
+}
+
+function changeSetting(a,b)
+{
+	if(a=="game")
+	{
+		switch(b)
+		{
+			case "mega": current_game="mega"; current_wager=1;break;
+			case "powerball": current_game="powerball"; current_wager=2;break;
+			case "pick5": current_game="pick5"; current_wager=1;break;
+			case "pick3": current_game="pick3"; current_wager=1;break;
+		}
+	}
+	else if(a="custom-ticket")
+	{
+		
+	}
+	
+	
+}
