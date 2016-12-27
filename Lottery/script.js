@@ -8,7 +8,10 @@ var ticket=[];
 var pull=[];
 var current_game="powerball";
 $(document).ready(function(){
-	ticket=playPowerBall();
+	
+	document.getElementById(current_game=="powerball"?"play-powerball":"play-mega").checked = true; //check the radio btn of the current game
+	//ticket=playPowerBall();
+	ticket=playGame(current_game);
 	setTicket(ticket);
 
 	$("#single-play").on("click", singlePlay );
