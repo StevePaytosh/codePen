@@ -10,7 +10,6 @@ var current_game="powerball";
 $(document).ready(function(){
 	
 	document.getElementById(current_game=="powerball"?"play-powerball":"play-mega").checked = true; //check the radio btn of the current game
-	//ticket=playPowerBall();
 	ticket=playGame(current_game);
 	setTicket(ticket);
 
@@ -26,9 +25,24 @@ $(document).ready(function(){
 		won_this_draw=0;
 		updateStats();
 	});
-	$(".game").on("click",function(){
+	$(".game_radio").on("click",function(){
 		
-		console.log(this);
+		var btns=document.getElementsByName("game");
+		for(var i=0;i<btns.length;i++)
+		{
+			if(btns[i].clicked )
+			{
+				switch(btns[i].value)
+				{
+					case "powerball":current_game="powerball";break;
+					case "mega": current_game="mega"; break;
+				}
+			}
+		}
+		console.log("current game: "+ current_game);
+		ticket=playGame(current_game);
+		setTicket(ticket);
+		//console.log(this);
 	});
   
   $("#random-ticket").on("click",function(){
@@ -55,10 +69,67 @@ function playGame( game)
 	switch(game)
 	{
 		case "powerball": return playPowerBall(); break;
-		case "mega":break;
+		case "mega": return playMegaMillions(); break;
 	}
 }
 
+function playMegaMillions()
+{
+	//5 white (1-75), 1 mega (1-15)
+	arr=[randomBall(75),randomBall(75),randomBall(75),randomBall(75),randomBall(69),-1];
+	
+	while(true)
+	{
+		//check index 1 for repeats
+		if(arr[0]==arr[1])
+			arr[1]=randomBall(69);
+		
+		break;
+	}
+	
+		while(true)
+	{
+		//check index 2 for repeats
+		if(arr[0]==arr[2])
+			arr[2]=randomBall(69);
+		if(arr[1]==arr[2])
+			arr[2]=randomBall(69);
+		
+		break;
+	}
+	
+		while(true)
+	{
+		//check index 3 for repeats
+		if(arr[0]==arr[3])
+			arr[3]=randomBall(69);
+		if(arr[1]==arr[3])
+			arr[3]=randomBall(69);
+		if(arr[2]==arr[3])
+			arr[3]=randomBall(69);
+		
+		break;
+	}
+	
+	while(true)
+	{
+		//check index 4 for repeats
+		if(arr[0]==arr[4])
+			arr[4]=randomBall(69);
+		if(arr[1]==arr[4])
+			arr[4]=randomBall(69);
+		if(arr[2]==arr[4])
+			arr[4]=randomBall(69);
+		if(arr[3]==arr[4])
+			arr[3]=randomBall(69);
+		
+		break;
+	}
+	
+	arr[5]=randomBall(15);
+//	console.log("powerball: "+arr[0]+" "+ arr[1]+" " + arr[2] + " " +arr[3]+ " " + arr[4]+ " "+arr[5] );
+	return arr;
+}
 function playPowerBall()
 {
 	//powerball rules 5 white balls (1-69) 1 red (1-26)
