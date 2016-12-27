@@ -14,6 +14,7 @@ $(document).ready(function(){
 	$("#single-play").on("click", singlePlay );
 	$("#win-play").on("click",playTillWin);
 	$("#jackpot-play").on("click",playTillJackpot);
+	$("#new-ticket").on("click",setTicket() );
 	$("#reset-stats").on("click",function(){
 		games_played=0;
 		total_won=0;
@@ -28,9 +29,10 @@ $(document).ready(function(){
 	});
   
   $("#random-ticket").on("click",function(){
-	  	ticket=playPowerBall();
+	  //	ticket=playPowerBall();
+	  ticket=playGame(current_game);
 		
-		$("#ticket1").html(ticker[0]);
+		$("#ticket1").html(ticket[0]);
 		$("#ticket2").html(ticket[1]);
 		$("#ticket3").html(ticket[2]);
 		$("#ticket4").html(ticket[3]);
@@ -49,7 +51,7 @@ function playGame( game)
 {
 	switch(game)
 	{
-		case "powerball": break;
+		case "powerball": return playPowerBall(); break;
 		case "mega":break;
 	}
 }
@@ -241,7 +243,7 @@ function playTillWin()
 function playTillJackpot()
 {
 	var results
-	for(var i=0; i<100;i++)
+	for(var i=0; i<1000;i++)
 	{
 		current_wager=2;
 		games_played++;
