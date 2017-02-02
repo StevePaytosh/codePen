@@ -5,6 +5,8 @@ $(document).ready(function() {
   var headerTemplate = $("#header-template").text();
   var firstLoad = true;
   var state = "all";
+  //var client_id="yjmzd5e7ig1a7yyd4kwxq7lh1ozqbs";
+  var api_version="5";
 
   $(".radio-btn").on("click", function() {
     if (firstLoad) {
@@ -38,8 +40,13 @@ $(document).ready(function() {
 });
 
 function getTwitchJson(channels, state, template) {
+	var client_id="yjmzd5e7ig1a7yyd4kwxq7lh1ozqbs";
   for (var i=0; i<channels.length; i++) {
-    var url = "https://api.twitch.tv/kraken/channels/" + channels[i] + "/";
+    var url = "https://api.twitch.tv/kraken/channels/" + channels[i] 
+	+"?"
+	+"client_id="+client_id;
+	
+	console.log("url:"+url+"\n");
 
     $.getJSON(url, function(json) {
       var info = {
@@ -50,6 +57,7 @@ function getTwitchJson(channels, state, template) {
         "account_name": channels[i]
       };
       getOnlineStatus(info, state, template);
+	  console.log("info\name:"+info.name+"\naccount_name:"+info.account_name);
     });
 
   }
@@ -87,8 +95,11 @@ function OpenInNewTab(url) {
 }
 
 function getOnlineStatus(info, state, template) {
-
-  var requestURL = "https://api.twitch.tv/kraken/streams?channel=" + info.name;
+var client_id="yjmzd5e7ig1a7yyd4kwxq7lh1ozqbs";
+  var requestURL = "https://api.twitch.tv/kraken/streams?channel=" 
+  + info.name
+  + "&client_id="+client_id;
+ // + "&apiversion="+api_version;
   $.getJSON(requestURL, function(json) {
     if (json.streams.length > 0) {
       info.status = "online";
