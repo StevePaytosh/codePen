@@ -132,19 +132,25 @@ function lose(){
 
 function setPhase0(){
 	//phase 0, welcome
-	$("#play-block").html("Welcome to TYPE SET FAIL:<p>The name of the game is to type whatever word comes up.<br><p>Simple Right?<br>"+
-	"The catch is that the keys you type are scrambled.<br><br>You can do that, can't you?<br>"+
-	"You'll only have a few seconds to do it.<p> While playing, don't worry about deleting wrong characters:<br>"
-	+" As long as you have the right characters in the right order, you'll be fine.<p>You'll also be able to view which letters" +
-	" are scrambled. <p> Don't cry, it'll be over quickly");
-	
-	$(".restart-btn").html("Let's Play");
+	$("#timer").hide();
+	$("#type").hide();
+	$("#play-block").hide();
+	$("#info-block").html("<div id=\"intro-text\">WANT TO PLAY A GAME</dv>");
+	bindstartbutton();
 	phase=0;
+}
+
+function bindstartbutton()
+{
+	$("#info-block").onclick()=setPhase1();
 }
 
 function setPhase1()
 {
 	//create a new round. 
+	$("#timer").show();
+	$("#type").show();
+	$("#play-block").show();
 	
 	input="";
 	current_word=getWord(calculateDifficulty());

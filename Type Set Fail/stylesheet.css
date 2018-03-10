@@ -2,13 +2,18 @@ body{
 	background-color:black !important;
 }
 
+#info-block{
+	margin: 10pt 0 0 40vw;
+color:green;
+font-size: 30pt;
+}
 #logo{
 		color:green;
 	font-size:35pt;
 	margin-left:35vw;
 }
 
-#info-block{
+#info-block2{
 margin: 10pt 0 0 40vw;
 color:white;
 font-size: 30pt;
